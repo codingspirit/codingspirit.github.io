@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>WebRTC: Compile Native WebRTC Android SDK</title>
+    <url>/2021-03-21/WebRTC-Compile-Native-WebRTC-Android-SDK/</url>
+    <content><![CDATA[<p>The very first step of modifying native WebRTC SDK for Android is clone source code from Google repository and compile it into jar.</p>
+<a id="more"></a>
+
+<h2 id="Install-depot-tools"><a href="#Install-depot-tools" class="headerlink" title="Install depot_tools"></a>Install depot_tools</h2><p><strong>depot_tools</strong> is a set of version control/build tools. We can get it from chromium repository:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://chromium.googlesource.com/chromium/tools/depot_tools.git</span><br></pre></td></tr></table></figure>
+
+<p>Then export those tools into <code>PATH</code>:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">export</span> PATH=<span class="variable">$PATH</span>:/<span class="variable">$&#123;depot_tools_path&#125;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="Fetch-code"><a href="#Fetch-code" class="headerlink" title="Fetch code"></a>Fetch code</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> <span class="variable">$&#123;path_you_want_to_save_webrtc_code&#125;</span></span><br><span class="line">fetch --nohooks webrtc_android</span><br><span class="line">gclient sync</span><br></pre></td></tr></table></figure>
+
+<h2 id="Checkout-to-your-base-branch"><a href="#Checkout-to-your-base-branch" class="headerlink" title="Checkout to your base branch"></a>Checkout to your base branch</h2><p>I was using <code>m79</code> :</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> webrtc_android/src/</span><br><span class="line">git checkout branch-heads/m79</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="Install-build-dependencies-and-compile"><a href="#Install-build-dependencies-and-compile" class="headerlink" title="Install build dependencies and compile"></a>Install build dependencies and compile</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="built_in">cd</span> webrtc_android/src/</span><br><span class="line">./build/install-build-deps.sh</span><br><span class="line">./tools_webrtc/android/build_aar.py</span><br></pre></td></tr></table></figure>
+
+<p><strong>build_aar.py</strong> will compile code, and package native and jar libraries into <em>webrtc_android/src/libwebrtc.aar</em></p>
+<h2 id="Use-the-built-libwebrtc-aar-in-your-Android-Studio-app-project"><a href="#Use-the-built-libwebrtc-aar-in-your-Android-Studio-app-project" class="headerlink" title="Use the built libwebrtc.aar in your Android Studio app project"></a>Use the built libwebrtc.aar in your Android Studio app project</h2><ol>
+<li>Copy aar files to <code>${your_android_studio_app_project}/libs/</code></li>
+<li>If you have <code>implementation &#39;org.webrtc:google-webrtc:xxxxxxxxxx&#39;</code> in <code>build.gradle</code>, remove it.</li>
+</ol>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>WebRTC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mbedTLS: MBEDTLS_ERR_SSL_INVALID_RECORD</title>
     <url>/2021-02-27/mbedTLS-MBEDTLS-ERR-SSL-INVALID-RECORD/</url>
     <content><![CDATA[<p>Using some RTOS built-in mbedTLS to connect to AWS IoT Core might fail due to <code>MBEDTLS_ERR_SSL_INVALID_RECORD</code>(-0x7200 or -29184) during ssl handshake. There are several possible causes:</p>
