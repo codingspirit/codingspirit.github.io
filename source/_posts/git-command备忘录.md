@@ -63,3 +63,9 @@ repo forall -vc "git reset --hard"
 ```
 GIT_SSH_COMMAND='ssh -i private_key.pem -o IdentitiesOnly=yes' git clone git@github.com:codingspirit/iotlab-kvs-jenkins-build.git
 ```
+
+## 修改first commit
+
+```
+git rebase -i --root
+```
