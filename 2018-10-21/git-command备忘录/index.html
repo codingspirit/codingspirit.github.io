@@ -32,7 +32,7 @@
 <meta property="og:site_name" content="Coding Spirit">
 <meta property="og:description" content="…">
 <meta property="article:published_time" content="2018-10-21T08:20:36.000Z">
-<meta property="article:modified_time" content="2020-08-29T12:34:28.170Z">
+<meta property="article:modified_time" content="2021-05-05T08:57:43.336Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="日志">
 <meta name="twitter:card" content="summary">
@@ -236,7 +236,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2020-08-29 20:34:28" itemprop="dateModified" datetime="2020-08-29T20:34:28+08:00">2020-08-29</time>
+                <time title="Modified: 2021-05-05 16:57:43" itemprop="dateModified" datetime="2021-05-05T16:57:43+08:00">2021-05-05</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -261,7 +261,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>737</span>
+              <span>768</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -305,6 +305,8 @@
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">repo forall -vc <span class="string">"git reset --hard"</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="使用指定private-key"><a href="#使用指定private-key" class="headerlink" title="使用指定private key"></a>使用指定private key</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">GIT_SSH_COMMAND&#x3D;&#39;ssh -i private_key.pem -o IdentitiesOnly&#x3D;yes&#39; git clone git@github.com:codingspirit&#x2F;iotlab-kvs-jenkins-build.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改first-commit"><a href="#修改first-commit" class="headerlink" title="修改first commit"></a>修改first commit</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git rebase -i --root</span><br></pre></td></tr></table></figure>
 
     </div>
 
@@ -407,7 +409,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局配置用户名和邮箱"><span class="nav-number">1.</span> <span class="nav-text">全局配置用户名和邮箱:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh密钥生成"><span class="nav-number">2.</span> <span class="nav-text">ssh密钥生成:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#储存https-http方式用户名密码"><span class="nav-number">3.</span> <span class="nav-text">储存https&#x2F;http方式用户名密码:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加tag并推送到远端"><span class="nav-number">4.</span> <span class="nav-text">添加tag并推送到远端:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改一个https仓库为ssh仓库："><span class="nav-number">5.</span> <span class="nav-text">更改一个https仓库为ssh仓库：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除remotes-origin-branch"><span class="nav-number">6.</span> <span class="nav-text">删除remotes&#x2F;origin&#x2F;{branch}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repo-操作"><span class="nav-number">7.</span> <span class="nav-text">repo 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用指定private-key"><span class="nav-number">8.</span> <span class="nav-text">使用指定private key</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#全局配置用户名和邮箱"><span class="nav-number">1.</span> <span class="nav-text">全局配置用户名和邮箱:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ssh密钥生成"><span class="nav-number">2.</span> <span class="nav-text">ssh密钥生成:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#储存https-http方式用户名密码"><span class="nav-number">3.</span> <span class="nav-text">储存https&#x2F;http方式用户名密码:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加tag并推送到远端"><span class="nav-number">4.</span> <span class="nav-text">添加tag并推送到远端:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更改一个https仓库为ssh仓库："><span class="nav-number">5.</span> <span class="nav-text">更改一个https仓库为ssh仓库：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#删除remotes-origin-branch"><span class="nav-number">6.</span> <span class="nav-text">删除remotes&#x2F;origin&#x2F;{branch}</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#repo-操作"><span class="nav-number">7.</span> <span class="nav-text">repo 操作</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用指定private-key"><span class="nav-number">8.</span> <span class="nav-text">使用指定private key</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#修改first-commit"><span class="nav-number">9.</span> <span class="nav-text">修改first commit</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
@@ -423,7 +425,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-count">115</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -457,7 +459,7 @@
       
         
           <div id="musicPlayerPost">
-            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=400876433&auto=0&height=66"></iframe>
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=507903881&auto=0&height=66"></iframe>
           </div>
         
       
@@ -489,12 +491,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">220k</span>
+    <span title="Symbols count total">221k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:20</span>
+    <span title="Reading time total">3:21</span>
 </div>
 
         

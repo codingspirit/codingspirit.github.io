@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>CMake: fetch and build dependencies</title>
+    <url>/2021-05-05/CMake-fetch-and-build-dependencies/</url>
+    <content><![CDATA[<p>Using cmake to fetch and build instead of using git submodule.</p>
+<a id="more"></a>
+
+<h2 id="FetchContent"><a href="#FetchContent" class="headerlink" title="FetchContent"></a>FetchContent</h2><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">include</span>(FetchContent)</span><br><span class="line"><span class="keyword">set</span>(FETCHCONTENT_QUIET <span class="keyword">FALSE</span>)</span><br><span class="line">FetchContent_Declare(log4cplus</span><br><span class="line">  GIT_REPOSITORY    https://github.com/log4cplus/log4cplus.git</span><br><span class="line">  GIT_TAG           REL_2_0_6</span><br><span class="line">  GIT_PROGRESS      <span class="keyword">TRUE</span></span><br><span class="line">)</span><br><span class="line">FetchContent_MakeAvailable(log4cplus)</span><br><span class="line"><span class="keyword">add_dependencies</span>(log4cplus)</span><br><span class="line"><span class="keyword">target_link_libraries</span>(<span class="variable">$&#123;PROJECT_NAME&#125;</span> PRIVATE log4cplus)</span><br></pre></td></tr></table></figure>
+
+<h2 id="ExternalProject"><a href="#ExternalProject" class="headerlink" title="ExternalProject"></a>ExternalProject</h2><figure class="highlight cmake"><table><tr><td class="code"><pre><span class="line"><span class="keyword">include</span>(ExternalProject)</span><br><span class="line"></span><br><span class="line"><span class="keyword">function</span> (build_external_project <span class="keyword">TARGET</span> ARGS GIT_REPOSITORY GIT_TAG)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">set</span>(trigger_build_dir <span class="variable">$&#123;CMAKE_BINARY_DIR&#125;</span>/force_<span class="variable">$&#123;TARGET&#125;</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#mktemp dir in build tree</span></span><br><span class="line">    <span class="keyword">file</span>(<span class="keyword">MAKE_DIRECTORY</span> <span class="variable">$&#123;trigger_build_dir&#125;</span> <span class="variable">$&#123;trigger_build_dir&#125;</span>/build)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#generate false dependency project</span></span><br><span class="line">    <span class="keyword">set</span>(CMAKE_LIST_CONTENT <span class="string">"</span></span><br><span class="line"><span class="string">        cmake_minimum_required(VERSION 3.14)</span></span><br><span class="line"><span class="string">        include(ExternalProject)</span></span><br><span class="line"><span class="string">        ExternalProject_add($&#123;TARGET&#125;</span></span><br><span class="line"><span class="string">          GIT_REPOSITORY  $&#123;GIT_REPOSITORY&#125;</span></span><br><span class="line"><span class="string">          GIT_TAG         $&#123;GIT_TAG&#125;</span></span><br><span class="line"><span class="string">          CMAKE_ARGS      $&#123;ARGS&#125;</span></span><br><span class="line"><span class="string">          TEST_COMMAND    \"\"</span></span><br><span class="line"><span class="string">        )</span></span><br><span class="line"><span class="string">        add_custom_target(trigger_$&#123;TARGET&#125;)</span></span><br><span class="line"><span class="string">        add_dependencies(trigger_$&#123;TARGET&#125; $&#123;TARGET&#125;)</span></span><br><span class="line"><span class="string">    "</span>)</span><br><span class="line">    <span class="keyword">message</span>(STATUS <span class="string">"CMAKE_ARGS is $&#123;CMAKE_ARGS&#125;"</span>)</span><br><span class="line">    <span class="keyword">file</span>(WRITE <span class="variable">$&#123;trigger_build_dir&#125;</span>/CMakeLists.txt <span class="string">"$&#123;CMAKE_LIST_CONTENT&#125;"</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">execute_process</span>(<span class="keyword">COMMAND</span> <span class="variable">$&#123;CMAKE_COMMAND&#125;</span> ..</span><br><span class="line">        WORKING_DIRECTORY <span class="variable">$&#123;trigger_build_dir&#125;</span>/build</span><br><span class="line">    )</span><br><span class="line">    <span class="keyword">execute_process</span>(<span class="keyword">COMMAND</span> <span class="variable">$&#123;CMAKE_COMMAND&#125;</span> --build .</span><br><span class="line">        WORKING_DIRECTORY <span class="variable">$&#123;trigger_build_dir&#125;</span>/build</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line"><span class="keyword">endfunction</span>()</span><br><span class="line"></span><br><span class="line">build_external_project(log4cplus</span><br><span class="line">  <span class="string">"-DCMAKE_INSTALL_PREFIX=$&#123;MY_INSTALL_DIR&#125; -DLOG4CPLUS_BUILD_TESTING=OFF -DBUILD_SHARED_LIBS=OFF"</span></span><br><span class="line">  https://github.com/log4cplus/log4cplus.git</span><br><span class="line">  REL_2_0_6</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>cmake</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Gstreamer: pipeline notes</title>
+    <url>/2021-05-05/Gstreamer-pipeline-notes/</url>
+    <content><![CDATA[<p>…</p>
+<a id="more"></a>
+
+<h2 id="Get-raw-opus-data-from-wav-file"><a href="#Get-raw-opus-data-from-wav-file" class="headerlink" title="Get raw opus data from wav file"></a>Get raw opus data from wav file</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">gst-launch-1.0 filesrc location&#x3D;&quot;input.wav&quot; ! wavparse ! decodebin ! audioconvert ! audioresample ! opusenc ! audio&#x2F;x-opus,rate&#x3D;8000,channels&#x3D;1 ! filesink location&#x3D;&quot;output.opus&quot;</span><br></pre></td></tr></table></figure>
+
+<p>To be continued…</p>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>日志</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>WebRTC: Compile Native WebRTC Android SDK</title>
     <url>/2021-03-21/WebRTC-Compile-Native-WebRTC-Android-SDK/</url>
     <content><![CDATA[<p>The very first step of modifying native WebRTC SDK for Android is clone source code from Google repository and compile it into jar.</p>
@@ -2718,6 +2752,8 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
 <figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">repo forall -vc <span class="string">"git reset --hard"</span></span><br></pre></td></tr></table></figure>
 
 <h2 id="使用指定private-key"><a href="#使用指定private-key" class="headerlink" title="使用指定private key"></a>使用指定private key</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">GIT_SSH_COMMAND&#x3D;&#39;ssh -i private_key.pem -o IdentitiesOnly&#x3D;yes&#39; git clone git@github.com:codingspirit&#x2F;iotlab-kvs-jenkins-build.git</span><br></pre></td></tr></table></figure>
+
+<h2 id="修改first-commit"><a href="#修改first-commit" class="headerlink" title="修改first commit"></a>修改first commit</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git rebase -i --root</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
         <category>随便写写</category>
