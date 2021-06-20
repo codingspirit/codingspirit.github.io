@@ -1,6 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>ECDSA: Verify Signature</title>
+    <url>/2021-06-20/ECDSA-Verify-Signature/</url>
+    <content><![CDATA[<p>To generate ECDSA Digital Signature: <a href="lzqblog.top/2021-06-20/ECDSA-Generate-ECDSA-Key-Certificate-Signature-By-openssl/">ECDSA: Generate ECDSA Key/Certificate/Signature By openssl</a></p>
+<a id="more"></a>
+
+<h2 id="Using-openssl"><a href="#Using-openssl" class="headerlink" title="Using openssl"></a>Using openssl</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha256 -verify ecdsasigner-pub.key -signature signature &lt;file_need_to_verify&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="Using-Java"><a href="#Using-Java" class="headerlink" title="Using Java"></a>Using Java</h2><figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isVerifyPassed</span><span class="params">(InputStream certIs, <span class="keyword">byte</span>[] data, String signature)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> res = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        Certificate certificate = CertificateFactory.getInstance(<span class="string">"X.509"</span>).generateCertificate(certIs);</span><br><span class="line">        Signature verifier = Signature.getInstance(<span class="string">"SHA256withECDSA"</span>);</span><br><span class="line">        verifier.initVerify(certificate);</span><br><span class="line">        verifier.update(data);</span><br><span class="line">        res = verifier.verify(Base64.decode(signature, Base64.NO_WRAP));</span><br><span class="line">    &#125; <span class="keyword">catch</span> (Exception ignored) &#123;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Crypto</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>ECDSA: Generate ECDSA Key/Certificate/Signature By openssl</title>
+    <url>/2021-06-20/ECDSA-Generate-ECDSA-Key-Certificate-Signature-By-openssl/</url>
+    <content><![CDATA[<a id="more"></a>
+
+<h2 id="Create-ECDSA-private-key"><a href="#Create-ECDSA-private-key" class="headerlink" title="Create ECDSA private key"></a>Create ECDSA private key</h2><p>Create file <code>cert_config.txt</code>:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ req ]</span><br><span class="line">prompt             &#x3D; no</span><br><span class="line">distinguished_name &#x3D; my_dn</span><br><span class="line">                    </span><br><span class="line">[ my_dn ]</span><br><span class="line">commonName &#x3D; xxxxxxxxx@xxxxxx.com</span><br><span class="line">                    </span><br><span class="line">[ my_exts ]</span><br><span class="line">keyUsage         &#x3D; digitalSignature</span><br><span class="line">extendedKeyUsage &#x3D; codeSigning</span><br></pre></td></tr></table></figure>
+
+<p>Then create ECDSA private key base on it:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -pkeyopt ec_param_enc:named_curve -outform PEM -out ecdsasigner.key</span><br></pre></td></tr></table></figure>
+
+<h2 id="Create-ECDSA-certificate-public-key"><a href="#Create-ECDSA-certificate-public-key" class="headerlink" title="Create ECDSA certificate/public key"></a>Create ECDSA certificate/public key</h2><p>If you need certificate:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl req -new -x509 -config cert_config.txt -extensions my_exts -nodes -days 365 -key ecdsasigner.key -out ecdsasigner.crt</span><br></pre></td></tr></table></figure>
+
+<p>If you need public key:</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl x509 -pubkey -noout -<span class="keyword">in</span> ecdsasigner.crt &gt; ecdsasigner-pub.key</span><br></pre></td></tr></table></figure>
+
+<h2 id="Create-SHA256-Digital-Signature"><a href="#Create-SHA256-Digital-Signature" class="headerlink" title="Create SHA256 Digital Signature"></a>Create SHA256 Digital Signature</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">openssl dgst -sha256 -sign ecdsasigner.key &lt;file_need_to_sign&gt; &gt; signature</span><br><span class="line">base64 signature</span><br></pre></td></tr></table></figure>
+
+<h2 id="Verify"><a href="#Verify" class="headerlink" title="Verify"></a>Verify</h2><p><a href="lzqblog.top/2021-06-20/ECDSA-Verify-Signature/">ECDSA: Verify Signature</a></p>
+]]></content>
+      <categories>
+        <category>随便写写</category>
+      </categories>
+      <tags>
+        <tag>Crypto</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>CMake: fetch and build dependencies</title>
     <url>/2021-05-05/CMake-fetch-and-build-dependencies/</url>
     <content><![CDATA[<p>Using cmake to fetch and build instead of using git submodule.</p>
