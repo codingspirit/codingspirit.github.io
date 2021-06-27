@@ -3,7 +3,7 @@ title: 'Jenkins (I): Install Jenkins On Ubuntu 18.04/20.04'
 top: false
 tags:
   - Jenkins
-  - Continuous Integration
+  - CI/CD
 date: 2020-09-15 20:29:36
 categories: CI
 ---

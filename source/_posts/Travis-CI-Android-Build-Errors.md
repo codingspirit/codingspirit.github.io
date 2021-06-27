@@ -3,7 +3,7 @@ title: 'Travis CI: Android Build Errors'
 top: false
 tags:
   - Android
-  - Continuous Integration
+  - CI/CD
 date: 2020-08-17 19:09:57
 categories: 问题记录
 ---

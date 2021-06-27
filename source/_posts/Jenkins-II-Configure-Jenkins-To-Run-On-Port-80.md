@@ -3,7 +3,7 @@ title: 'Jenkins (II): Configure Jenkins To Run On Port 80'
 top: false
 tags:
   - Jenkins
-  - Continuous Integration
+  - CI/CD
 date: 2020-09-15 20:40:21
 categories: CI
 ---

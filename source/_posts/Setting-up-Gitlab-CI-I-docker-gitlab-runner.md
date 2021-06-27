@@ -2,7 +2,7 @@
 title: 'Setting up Gitlab CI (I): docker+gitlab-runner'
 top: false
 tags:
-  - Continuous Integration
+  - CI/CD
 date: 2019-09-28 08:14:36
 categories: CI
 ---
