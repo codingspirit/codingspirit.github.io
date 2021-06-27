@@ -1,6 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Jenkins: Check Online/Offline Salve Nodes</title>
+    <url>/2021-06-27/Jenkins-Check-Online-Offline-Salve-Nodes/</url>
+    <content><![CDATA[<p>…</p>
+<a id="more"></a>
+
+<p>Manage Jenkins &gt; Script Console</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">for (node in Jenkins.instance.nodes) &#123;</span><br><span class="line">  println &quot;$&#123;node.name&#125;, $&#123;node.numExecutors&#125;&quot;</span><br><span class="line">  def computer &#x3D; node.computer</span><br><span class="line">  println &quot;Online: $&#123;computer.online&#125;, $&#123;computer.connectTime&#125; ($&#123;computer.offlineCauseReason&#125;)&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+]]></content>
+      <tags>
+        <tag>Jenkins</tag>
+        <tag>CI/CD</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>ECDSA: Verify Signature</title>
     <url>/2021-06-20/ECDSA-Verify-Signature/</url>
     <content><![CDATA[<p>To generate ECDSA Digital Signature: <a href="/2021-06-20/ECDSA-Generate-ECDSA-Key-Certificate-Signature-By-openssl/">ECDSA: Generate ECDSA Key/Certificate/Signature By openssl</a></p>
@@ -280,8 +294,8 @@
         <category>CI</category>
       </categories>
       <tags>
-        <tag>Continuous Integration</tag>
         <tag>Jenkins</tag>
+        <tag>CI/CD</tag>
       </tags>
   </entry>
   <entry>
@@ -311,8 +325,8 @@
         <category>CI</category>
       </categories>
       <tags>
-        <tag>Continuous Integration</tag>
         <tag>Jenkins</tag>
+        <tag>CI/CD</tag>
       </tags>
   </entry>
   <entry>
@@ -389,7 +403,7 @@
       </categories>
       <tags>
         <tag>Android</tag>
-        <tag>Continuous Integration</tag>
+        <tag>CI/CD</tag>
       </tags>
   </entry>
   <entry>
@@ -1332,7 +1346,7 @@
         <category>CI</category>
       </categories>
       <tags>
-        <tag>Continuous Integration</tag>
+        <tag>CI/CD</tag>
       </tags>
   </entry>
   <entry>
@@ -1434,7 +1448,7 @@
         <category>CI</category>
       </categories>
       <tags>
-        <tag>Continuous Integration</tag>
+        <tag>CI/CD</tag>
       </tags>
   </entry>
   <entry>
@@ -3001,7 +3015,7 @@ cond(yes,down)->e</textarea><textarea id="flowchart-0-options" style="display: n
       </categories>
       <tags>
         <tag>shell</tag>
-        <tag>Continuous Integration</tag>
+        <tag>CI/CD</tag>
       </tags>
   </entry>
   <entry>
