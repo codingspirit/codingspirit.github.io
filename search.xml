@@ -1,6 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>WebRTC: H.264 On Non-Qualcomm Android Devices</title>
+    <url>/2021-07-11/WebRTC-H-264-On-Non-Qualcomm-Android-Devices/</url>
+    <content><![CDATA[<p>User might expiring SDP failure on non-Qualcomm/SAMSUNG chip Android devices when received SDP from another peer that only support H.264. This was caused by a limitation of Android WebRTC SDK that it will check H.264 capabilities via a chip whitelist, which only has Qualcomm and Exynos listed. To make it available for other Android devices, we need to modify and recompile WebRTC Android SDK.</p>
+<a id="more"></a>
+
+<h2 id="Fetch-Code-And-Test-Build"><a href="#Fetch-Code-And-Test-Build" class="headerlink" title="Fetch Code And Test Build"></a>Fetch Code And Test Build</h2><p><a href="/2021-03-21/WebRTC-Compile-Native-WebRTC-Android-SDK/">WebRTC: Compile Native WebRTC Android SDK</a></p>
+<h2 id="Modifications"><a href="#Modifications" class="headerlink" title="Modifications"></a>Modifications</h2><p>Original code in <em>HardwareVideoEncoderFactory.java</em>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isHardwareSupportedInCurrentSdkH264</span><span class="params">(MediaCodecInfo info)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// First, H264 hardware might perform poorly on this model.</span></span><br><span class="line">  <span class="keyword">if</span> (H264_HW_EXCEPTION_MODELS.contains(Build.MODEL)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  String name = info.getName();</span><br><span class="line">  <span class="comment">// QCOM H264 encoder is supported in KITKAT or later.</span></span><br><span class="line">  <span class="keyword">return</span> (name.startsWith(QCOM_PREFIX) &amp;&amp; Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.KITKAT)</span><br><span class="line">      <span class="comment">// Exynos H264 encoder is supported in LOLLIPOP or later.</span></span><br><span class="line">      || (name.startsWith(EXYNOS_PREFIX)</span><br><span class="line">              &amp;&amp; Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>You could add your chips into whitelist here, but it might be easier to remove whitelist check if your target devices is running Android 5.0+(LOLLIPOP), since basically all chips in Android devices support H.264 nowadays.</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isHardwareSupportedInCurrentSdkH264</span><span class="params">(MediaCodecInfo info)</span> </span>&#123;</span><br><span class="line">  <span class="comment">// First, H264 hardware might perform poorly on this model.</span></span><br><span class="line">  <span class="keyword">if</span> (H264_HW_EXCEPTION_MODELS.contains(Build.MODEL)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Same modifications should be added into <em>MediaCodecVideoDecoderFactory.java</em> as well.<br>Original code in <em>MediaCodecVideoDecoderFactory.java</em>:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isH264HighProfileSupported</span><span class="params">(MediaCodecInfo info)</span> </span>&#123;</span><br><span class="line">  String name = info.getName();</span><br><span class="line">  <span class="comment">// Support H.264 HP decoding on QCOM chips for Android L and above.</span></span><br><span class="line">  <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP &amp;&amp; name.startsWith(QCOM_PREFIX)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// Support H.264 HP decoding on Exynos chips for Android M and above.</span></span><br><span class="line">  <span class="keyword">if</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.M &amp;&amp; name.startsWith(EXYNOS_PREFIX)) &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">false</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>modified:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">isH264HighProfileSupported</span><span class="params">(MediaCodecInfo info)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> (Build.VERSION.SDK_INT &gt;= Build.VERSION_CODES.LOLLIPOP);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Then recompile SDK by following <a href="#Fetch-Code-And-Test-Build">Fetch Code And Test Build</a>.</p>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Android</tag>
+        <tag>WebRTC</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Jenkins: Check Online/Offline Salve Nodes</title>
     <url>/2021-06-27/Jenkins-Check-Online-Offline-Salve-Nodes/</url>
     <content><![CDATA[<p>…</p>
@@ -31,7 +59,8 @@
   <entry>
     <title>ECDSA: Generate ECDSA Key/Certificate/Signature By openssl</title>
     <url>/2021-06-20/ECDSA-Generate-ECDSA-Key-Certificate-Signature-By-openssl/</url>
-    <content><![CDATA[<a id="more"></a>
+    <content><![CDATA[<p>…</p>
+<a id="more"></a>
 
 <h2 id="Create-ECDSA-private-key"><a href="#Create-ECDSA-private-key" class="headerlink" title="Create ECDSA private key"></a>Create ECDSA private key</h2><p>Create file <code>cert_config.txt</code>:</p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[ req ]</span><br><span class="line">prompt             &#x3D; no</span><br><span class="line">distinguished_name &#x3D; my_dn</span><br><span class="line">                    </span><br><span class="line">[ my_dn ]</span><br><span class="line">commonName &#x3D; xxxxxxxxx@xxxxxx.com</span><br><span class="line">                    </span><br><span class="line">[ my_exts ]</span><br><span class="line">keyUsage         &#x3D; digitalSignature</span><br><span class="line">extendedKeyUsage &#x3D; codeSigning</span><br></pre></td></tr></table></figure>
@@ -93,7 +122,7 @@
   <entry>
     <title>WebRTC: Compile Native WebRTC Android SDK</title>
     <url>/2021-03-21/WebRTC-Compile-Native-WebRTC-Android-SDK/</url>
-    <content><![CDATA[<p>The very first step of modifying native WebRTC SDK for Android is clone source code from Google repository and compile it into jar.</p>
+    <content><![CDATA[<p>The very first step of modifying native WebRTC SDK for Android is cloning source code from WebRTC repository and compiling it into jar.</p>
 <a id="more"></a>
 
 <h2 id="Install-depot-tools"><a href="#Install-depot-tools" class="headerlink" title="Install depot_tools"></a>Install depot_tools</h2><p><strong>depot_tools</strong> is a set of version control/build tools. We can get it from chromium repository:</p>

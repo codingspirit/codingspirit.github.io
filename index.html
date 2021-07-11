@@ -202,6 +202,95 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2021-07-11/WebRTC-H-264-On-Non-Qualcomm-Android-Devices/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC，现就职于Amazon">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2021-07-11/WebRTC-H-264-On-Non-Qualcomm-Android-Devices/" class="post-title-link" itemprop="url">WebRTC: H.264 On Non-Qualcomm Android Devices</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              
+
+              <time title="Created: 2021-07-11 09:18:16 / Modified: 10:03:57" itemprop="dateCreated datePublished" datetime="2021-07-11T09:18:16+08:00">2021-07-11</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="Symbols count in article">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">Symbols count in article: </span>
+              <span>2.2k</span>
+            </span>
+            <span class="post-meta-item" title="Reading time">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">Reading time &asymp;</span>
+              <span>2 mins.</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>User might expiring SDP failure on non-Qualcomm/SAMSUNG chip Android devices when received SDP from another peer that only support H.264. This was caused by a limitation of Android WebRTC SDK that it will check H.264 capabilities via a chip whitelist, which only has Qualcomm and Exynos listed. To make it available for other Android devices, we need to modify and recompile WebRTC Android SDK.</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021-07-11/WebRTC-H-264-On-Non-Qualcomm-Android-Devices/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
     <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2021-06-27/Jenkins-Check-Online-Offline-Salve-Nodes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -385,10 +474,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-06-20 09:35:17 / Modified: 10:05:31" itemprop="dateCreated datePublished" datetime="2021-06-20T09:35:17+08:00">2021-06-20</time>
+              <time title="Created: 2021-06-20 09:35:17" itemprop="dateCreated datePublished" datetime="2021-06-20T09:35:17+08:00">2021-06-20</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-11 09:12:36" itemprop="dateModified" datetime="2021-07-11T09:12:36+08:00">2021-07-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -405,7 +500,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>773</span>
+              <span>774</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -424,24 +519,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h2 id="Create-ECDSA-private-key"><a href="#Create-ECDSA-private-key" class="headerlink" title="Create ECDSA private key"></a>Create ECDSA private key</h2><p>Create file <code>cert_config.txt</code>:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">[ req ]</span><br><span class="line">prompt             &#x3D; no</span><br><span class="line">distinguished_name &#x3D; my_dn</span><br><span class="line">                    </span><br><span class="line">[ my_dn ]</span><br><span class="line">commonName &#x3D; xxxxxxxxx@xxxxxx.com</span><br><span class="line">                    </span><br><span class="line">[ my_exts ]</span><br><span class="line">keyUsage         &#x3D; digitalSignature</span><br><span class="line">extendedKeyUsage &#x3D; codeSigning</span><br></pre></td></tr></table></figure>
-
-<p>Then create ECDSA private key base on it:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl genpkey -algorithm EC -pkeyopt ec_paramgen_curve:P-256 -pkeyopt ec_param_enc:named_curve -outform PEM -out ecdsasigner.key</span><br></pre></td></tr></table></figure>
-
-<h2 id="Create-ECDSA-certificate-public-key"><a href="#Create-ECDSA-certificate-public-key" class="headerlink" title="Create ECDSA certificate/public key"></a>Create ECDSA certificate/public key</h2><p>If you need certificate:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl req -new -x509 -config cert_config.txt -extensions my_exts -nodes -days 365 -key ecdsasigner.key -out ecdsasigner.crt</span><br></pre></td></tr></table></figure>
-
-<p>If you need public key:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">openssl x509 -pubkey -noout -<span class="keyword">in</span> ecdsasigner.crt &gt; ecdsasigner-pub.key</span><br></pre></td></tr></table></figure>
-
-<h2 id="Create-SHA256-Digital-Signature"><a href="#Create-SHA256-Digital-Signature" class="headerlink" title="Create SHA256 Digital Signature"></a>Create SHA256 Digital Signature</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">openssl dgst -sha256 -sign ecdsasigner.key &lt;file_need_to_sign&gt; &gt; signature</span><br><span class="line">base64 signature</span><br></pre></td></tr></table></figure>
-
-<h2 id="Verify"><a href="#Verify" class="headerlink" title="Verify"></a>Verify</h2><p><a href="/2021-06-20/ECDSA-Verify-Signature/">ECDSA: Verify Signature</a></p>
-
+          <p>…</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2021-06-20/ECDSA-Generate-ECDSA-Key-Certificate-Signature-By-openssl/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
@@ -661,10 +747,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              
 
-              <time title="Created: 2021-03-21 08:22:56 / Modified: 08:53:29" itemprop="dateCreated datePublished" datetime="2021-03-21T08:22:56+08:00">2021-03-21</time>
+              <time title="Created: 2021-03-21 08:22:56" itemprop="dateCreated datePublished" datetime="2021-03-21T08:22:56+08:00">2021-03-21</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2021-07-11 09:00:31" itemprop="dateModified" datetime="2021-07-11T09:00:31+08:00">2021-07-11</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -681,7 +773,7 @@
                 <i class="far fa-file-word"></i>
               </span>
                 <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>957</span>
+              <span>961</span>
             </span>
             <span class="post-meta-item" title="Reading time">
               <span class="post-meta-item-icon">
@@ -700,7 +792,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>The very first step of modifying native WebRTC SDK for Android is clone source code from Google repository and compile it into jar.</p>
+          <p>The very first step of modifying native WebRTC SDK for Android is cloning source code from WebRTC repository and compiling it into jar.</p>
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2021-03-21/WebRTC-Compile-Native-WebRTC-Android-SDK/#more" rel="contents">
@@ -989,91 +1081,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2020-11-13/SSH-Keep-Connection-Alive/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/assets/img/coding_spirit.jpg">
-      <meta itemprop="name" content="Coding Spirit">
-      <meta itemprop="description" content="毕业于OUC，现就职于Amazon">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coding Spirit">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2020-11-13/SSH-Keep-Connection-Alive/" class="post-title-link" itemprop="url">SSH: Keep Connection Alive</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              
-
-              <time title="Created: 2020-11-13 22:05:12 / Modified: 22:13:32" itemprop="dateCreated datePublished" datetime="2020-11-13T22:05:12+08:00">2020-11-13</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E9%9A%8F%E4%BE%BF%E5%86%99%E5%86%99/" itemprop="url" rel="index"><span itemprop="name">随便写写</span></a>
-                </span>
-            </span>
-
-          <br>
-            <span class="post-meta-item" title="Symbols count in article">
-              <span class="post-meta-item-icon">
-                <i class="far fa-file-word"></i>
-              </span>
-                <span class="post-meta-item-text">Symbols count in article: </span>
-              <span>274</span>
-            </span>
-            <span class="post-meta-item" title="Reading time">
-              <span class="post-meta-item-icon">
-                <i class="far fa-clock"></i>
-              </span>
-                <span class="post-meta-item-text">Reading time &asymp;</span>
-              <span>1 mins.</span>
-            </span>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>SSH connection will automatically drop due to timeout if there is no operation for a period. To keep connection alive, we can config ssh client to send a <em>keepalive</em> periodically. In <em>~/.ssh/config</em>, there is a parameter for this:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ServerAliveInterval 60</span><br></pre></td></tr></table></figure>
-
-<p>If we set this value to 60, SSH client will send a <em>keepalive</em> every 60 seconds.</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1145,7 +1152,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">118</span>
+          <span class="site-state-item-count">119</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -1211,12 +1218,12 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-area"></i>
     </span>
-    <span title="Symbols count total">223k</span>
+    <span title="Symbols count total">225k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">3:23</span>
+    <span title="Reading time total">3:25</span>
 </div>
 
         
