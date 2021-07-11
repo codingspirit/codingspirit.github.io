@@ -8,7 +8,7 @@ date: 2021-03-21 08:22:56
 categories: 编程相关
 ---
 
-The very first step of modifying native WebRTC SDK for Android is clone source code from Google repository and compile it into jar.
+The very first step of modifying native WebRTC SDK for Android is cloning source code from WebRTC repository and compiling it into jar.
 
 
 <!--more-->
