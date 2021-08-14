@@ -14,7 +14,7 @@ There are some Yocto distributions still using sysvinit as their default init ma
 
 ```conf
 # build/conf/local.conf
-DISTRO_FEATURES_append += "systemd"
+DISTRO_FEATURES_append = " systemd"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 DISTRO_FEATURES_BACKFILL_CONSIDERED += "sysvinit"
 VIRTUAL-RUNTIME_initscripts = ""
