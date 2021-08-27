@@ -5,7 +5,7 @@ tags:
   - Yocto
   - Linux
 date: 2019-06-07 18:38:38
-categories: 随便写写
+categories: 系统构建
 ---
 As a replacement of System V init, systemd has been supported by Yocto long time ago. Let's take a look at how to implement a Yocto recipe for systemd services.
 <!--more-->
