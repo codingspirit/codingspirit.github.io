@@ -1,7 +1,7 @@
 ---
 title: cmake notes
 tags:
-  - cmake
+  - CMake
 date: 2019-03-04 10:14:47
 categories: 编程相关
 ---

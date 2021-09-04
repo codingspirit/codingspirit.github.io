@@ -2,7 +2,7 @@
 title: 'CMake: fetch and build dependencies'
 top: false
 tags:
-  - cmake
+  - CMake
 date: 2021-05-05 17:13:49
 categories: 编程相关
 ---

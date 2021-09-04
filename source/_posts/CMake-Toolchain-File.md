@@ -2,7 +2,7 @@
 title: 'CMake: Toolchain File'
 top: false
 tags:
-  - cmake
+  - CMake
 date: 2020-12-27 19:16:07
 categories: 编程相关
 ---

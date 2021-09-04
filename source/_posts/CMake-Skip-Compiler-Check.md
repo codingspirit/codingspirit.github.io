@@ -2,7 +2,7 @@
 title: 'CMake: Skip Compiler Check'
 top: false
 tags:
-  - cmake
+  - CMake
 date: 2020-09-13 08:08:38
 categories: 编程相关
 ---
