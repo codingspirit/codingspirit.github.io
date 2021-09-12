@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: Palindrome Number'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2019-10-26 11:11:46
 categories: 算法题解
 ---

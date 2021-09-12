@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: Number of Islands'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2020-10-18 13:47:51
 categories: 算法题解
 ---

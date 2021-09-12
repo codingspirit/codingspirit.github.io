@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: Add two numbers'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2019-07-14 16:59:31
 categories: 算法题解
 ---

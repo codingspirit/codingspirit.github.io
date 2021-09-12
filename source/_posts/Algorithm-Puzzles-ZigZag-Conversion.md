@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: ZigZag Conversion'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2019-09-28 07:58:32
 categories: 算法题解
 ---

@@ -2,7 +2,7 @@
 title: 'Linux C/C++ debugging: using adb and gdb'
 tags:
   - Linux
-  - C++
+  - C&#43;&#43;
 date: 2019-02-16 19:38:56
 categories: 编程相关
 ---

@@ -1,7 +1,7 @@
 ---
 title: 'C++ Design Patterns: Singleton'
 tags:
-  - C++
+  - C&#43;&#43;
 date: 2018-09-12 16:46:08
 categories: 编程相关
 ---

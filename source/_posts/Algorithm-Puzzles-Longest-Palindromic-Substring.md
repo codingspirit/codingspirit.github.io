@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: Longest Palindromic Substring'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2019-08-04 15:50:03
 categories: 算法题解
 ---

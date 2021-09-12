@@ -1,7 +1,7 @@
 ---
 title: 'C/C++ mixed programming error: undefined reference'
 tags:
-  - C++
+  - C&#43;&#43;
   - C
 date: 2019-03-18 20:37:06
 categories: 编程相关

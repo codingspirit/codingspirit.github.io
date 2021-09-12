@@ -2,7 +2,7 @@
 title: Cross compile gRPC for ARM
 tags:
   - Linux
-  - C++
+  - C&#43;&#43;
   - gPRC
 date: 2018-11-08 13:04:12
 categories: 编程相关

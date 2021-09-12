@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: String to Integer (atoi)'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2019-10-13 22:10:46
 categories: 算法题解
 ---

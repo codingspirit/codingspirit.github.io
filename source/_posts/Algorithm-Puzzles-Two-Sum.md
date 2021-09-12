@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: Two Sum'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2019-07-11 19:34:16
 categories: 算法题解
 ---

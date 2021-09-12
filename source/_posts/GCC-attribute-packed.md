@@ -3,7 +3,7 @@ title: 'GCC: __attribute__ ((__packed__))'
 top: false
 tags:
   - C
-  - C++
+  - C&#43;&#43;
 date: 2020-02-11 21:28:07
 categories: 编程相关
 ---

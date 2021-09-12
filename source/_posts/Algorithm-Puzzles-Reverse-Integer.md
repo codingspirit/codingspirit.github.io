@@ -3,7 +3,7 @@ title: 'Algorithm Puzzles: Reverse Integer'
 top: false
 tags:
   - Algorithm
-  - C++
+  - C&#43;&#43;
 date: 2019-10-05 11:10:16
 categories: 算法题解
 ---
