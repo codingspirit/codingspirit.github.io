@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
-subtitle: ''
-description: ''
+title: Coding Spirit
+subtitle: '一位程序员，比较帅的那种'
+description: '毕业于OUC，现就职于Amazon'
 keywords:
-author: John Doe
+author: Coding Spirit
 language: en
-timezone: ''
+timezone: 'Asia/Shanghai'
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: https://lzqblog.top
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -29,7 +29,8 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-
+    - baidu_verify_lHwoaFrtYU.html
+    - google8349d14d52107f3e.html
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -40,7 +41,7 @@ external_link:
   exclude: ''
 filename_case: 0
 render_drafts: false
-post_asset_folder: false
+post_asset_folder: true
 relative_link: false
 future: true
 highlight:
@@ -97,9 +98,16 @@ ignore:
 # Extensions
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
-theme: landscape
+theme: next
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
   type: ''
+
+# export HEXO_ALGOLIA_INDEXING_KEY=81c90fc42aaa863e47b1049dd1b739ce; hexo algolia
+algolia:
+  applicationID: '4PWJG0L702'
+  apiKey: 'cf1d0551cf23d3f0ddd2703fb916230c'
+  indexName: 'blog'
+  chunkSize: 5000
