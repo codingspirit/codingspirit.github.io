@@ -103,7 +103,13 @@ theme: next
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment
 deploy:
-  type: ''
+  type: 'git'
+  repo:
+    github: git@github.com:codingspirit/codingspirit.github.io.git
+    tencentcloud: git@e.coding.net:codingspirit/lzqblog.top/lzqblog.top.git
+    coding: git@e.coding.net:Coding_Spirit/Coding_Spirit.git
+    # gitee: git@gitee.com:lzqgyq/lzqblog.git
+  branch: master
 
 # export HEXO_ALGOLIA_INDEXING_KEY=81c90fc42aaa863e47b1049dd1b739ce; hexo algolia
 algolia:
@@ -111,3 +117,23 @@ algolia:
   apiKey: 'cf1d0551cf23d3f0ddd2703fb916230c'
   indexName: 'blog'
   chunkSize: 5000
+
+# counting
+symbols_count_time:
+  symbols: true
+  time: true
+  total_symbols: true
+  total_time: true
+  exclude_codeblock: false
+  awl: 4
+  wpm: 275
+  suffix: "mins."
+
+# Security
+encrypt: # hexo-blog-encrypt
+  abstract: Here's something encrypted, password is required to continue reading.
+  message: Hey, password is required here.
+  tags:
+  - {name: 加密, password: s..g}
+  wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
+  wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
