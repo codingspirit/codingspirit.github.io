@@ -9,7 +9,7 @@ This post will give a simple introduction to Linux kernel module(Part II.).
 
 Linux kernel module简介(二)
 <!--more-->
-Let's continue the unfinished parts we left in [Part I.](https://lzqblog.top/2018-12-08/Linux-kernel-module-1/).
+Let's continue the unfinished parts we left in [Part I.](https://lzqblog.top/2018/12/08/Linux-kernel-module-1/).
 ## A I2C module
 ### What is regmap
 

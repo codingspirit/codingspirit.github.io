@@ -11,7 +11,7 @@ A brief introduction about how to setup Gitlab CI (part I).
 
 <!--more-->
 
-If you are new to docker, this post might help: [Click this](https://lzqblog.top/2018-01-09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)
+If you are new to docker, this post might help: [Click this](https://lzqblog.top/2018/01/09/Docker%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4/)
 
 
 ## Install and setup gitlab runner
