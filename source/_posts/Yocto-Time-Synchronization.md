@@ -114,4 +114,8 @@ do_install_append() {
 
 ```
 
-To trigger time synchronization while booting up, user need to execute `ntpd -gq` in boot scripts. This will make `ntpd` run only once, synchronize system time and quit, which might be useful for saving system resources.
+To trigger time synchronization while booting up, user need to execute `ntpd -nqp` in boot scripts. This will make `ntpd` run only once, synchronize system time and quit, which might be useful for saving system resources:
+
+```bash
+ntpd -nqp cn.pool.ntp.org
+```
