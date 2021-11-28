@@ -28,7 +28,7 @@ Example 2:
 Input: "cbbd"
 Output: "bb"
 
-## Solving
+## Solution
 
 ### First Came out solution:
 

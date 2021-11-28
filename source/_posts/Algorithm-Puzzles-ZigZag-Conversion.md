@@ -43,7 +43,7 @@ Y A   H R
 P     I
 ```
 
-## Solving
+## Solution
 ### First came out solution
 
 |   0   |       |       |   6   |       |       |  12   |

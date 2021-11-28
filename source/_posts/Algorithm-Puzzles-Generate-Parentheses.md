@@ -29,7 +29,7 @@ Input: n = 1
 Output: ["()"]
 ```
 
-## Solving
+## Solution
 ### Recursion
 
 For a well-formed parentheses:

@@ -35,7 +35,7 @@ X can be placed before L (50) and C (100) to make 40 and 90.<br>
 C can be placed before D (500) and M (1000) to make 400 and 900.<br>
 Given an integer, convert it to a roman numeral. Input is guaranteed to be within the range from 1 to 3999.<br>
 
-## Solving
+## Solution
 ## Solution 1
 ```cpp
 class Solution {

@@ -39,7 +39,7 @@ Input: grid = [
 Output: 3
 ```
 
-## Solving
+## Solution
 It looks like a typical depth-first search puzzle:
 
 ```cpp

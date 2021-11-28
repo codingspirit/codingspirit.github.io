@@ -34,7 +34,7 @@ nums2 = [3, 4]
 
 The median is (2 + 3)/2 = 2.5
 
-## Solving
+## Solution
 
 The first came out solution is using merge sort since the sub-vectors are already sorted. The funny part is the puzzle requests time complexity should be O(log (m+n)), which is same as merge sort.
 

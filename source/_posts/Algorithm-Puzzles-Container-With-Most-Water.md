@@ -20,7 +20,7 @@ Given n non-negative integers a1, a2, ..., an , where each represents a point at
 
 Note: You may not slant the container and n is at least 2.
 
-## Solving
+## Solution
 
 This puzzle can be easily solved by exhaustion method but time complexity is **O(N^2)**. A better approach will be using "compress window“：
 ```cpp

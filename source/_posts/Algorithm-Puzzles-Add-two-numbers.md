@@ -43,7 +43,7 @@ public:
 };
 ```
 
-## Solving
+## Solution
 
 My first came out solution just like how we do sum on draft paper:
 

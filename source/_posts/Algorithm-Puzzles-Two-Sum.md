@@ -37,7 +37,7 @@ public:
 };
 ```
 
-## Solving
+## Solution
 
 The first came out solution from my head is for every elements for-loop traverse once to find the result:
 

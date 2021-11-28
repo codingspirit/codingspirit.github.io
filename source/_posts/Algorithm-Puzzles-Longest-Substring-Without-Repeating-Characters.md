@@ -32,7 +32,7 @@ Output: 3
 Explanation: The answer is "wke", with the length of 3. 
              Note that the answer must be a substring, "pwke" is a subsequence and not a substring.
 
-## Solving
+## Solution
 ### First came out solution
 
 Traverse substring(not all of them, with a little bit optimization)

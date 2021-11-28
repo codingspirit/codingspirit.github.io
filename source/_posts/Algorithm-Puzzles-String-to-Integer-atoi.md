@@ -61,7 +61,7 @@ Output: -2147483648
 Explanation: The number "-91283472332" is out of the range of a 32-bit signed integer.
              Thefore INT_MIN (−231) is returned.
 ```
-## Solving
+## Solution
 
 My first solution is using regex to filtrate incorrect inputs and find out the numerical:
 
