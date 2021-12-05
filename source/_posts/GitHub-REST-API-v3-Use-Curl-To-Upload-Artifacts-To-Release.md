@@ -2,7 +2,7 @@
 title: 'GitHub REST API v3: Use Curl To Upload Artifact To Release'
 top: false
 tags:
-  - 日志
+  - GitHub
 date: 2020-08-30 09:01:17
 categories: 随便写写
 ---

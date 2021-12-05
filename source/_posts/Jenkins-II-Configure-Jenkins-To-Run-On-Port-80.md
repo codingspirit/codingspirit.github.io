@@ -3,9 +3,8 @@ title: 'Jenkins (II): Configure Jenkins To Run On Port 80'
 top: false
 tags:
   - Jenkins
-  - CI/CD
 date: 2020-09-15 20:40:21
-categories: CI
+categories: CI/CD
 ---
 
 Jenkins is running on port 8080 by default, thus user need to manually add **:8080** when access Jenkins. If we make it running on port 80(default http port), user will no longer need to type port number manually.

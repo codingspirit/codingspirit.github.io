@@ -2,9 +2,9 @@
 title: 'Jenkins+Gerrit: 自动commit//code review//submit'
 tags:
   - shell
-  - CI/CD
+  - Jenkins
 date: 2018-03-20 13:08:29
-categories: CI
+categories: CI/CD
 ---
   Jenkins+Gerrit的一般工作模式：user commit code to Gerrit->Jenkins test build success->other user code review +2->user submit->Jenkins release build->release SW. 我之前写了个release notes generator, 在Jenasdkins server上release build的时候， 可以自动生成release notes并打包并发给开发者。但是这个release notes在下一次build的时候会因为workspace的清空而被删除，因此希望Jenkins能够将release notes commit到Gerrit并保留下来，最后再自动上传到sharepoint上。实现上述过程后，自动化构建的自动化程度会更高一点，开发者只需在Jenkins上press a button, release就自动完成了。
 <!--more-->

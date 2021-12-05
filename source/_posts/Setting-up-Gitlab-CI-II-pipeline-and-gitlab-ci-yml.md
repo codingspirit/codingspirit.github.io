@@ -4,7 +4,7 @@ top: false
 tags:
   - CI/CD
 date: 2019-10-19 19:00:31
-categories: CI
+categories: CI/CD
 ---
 
 A brief introduction about how to setup Gitlab CI (part II).

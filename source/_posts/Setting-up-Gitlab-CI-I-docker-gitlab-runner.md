@@ -2,9 +2,9 @@
 title: 'Setting up Gitlab CI (I): docker+gitlab-runner'
 top: false
 tags:
-  - CI/CD
+  - Gitlab
 date: 2019-09-28 08:14:36
-categories: CI
+categories: CI/CD
 ---
 
 A brief introduction about how to setup Gitlab CI (part I).
