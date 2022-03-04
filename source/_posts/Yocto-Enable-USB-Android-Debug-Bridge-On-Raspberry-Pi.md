@@ -15,7 +15,7 @@ Some RPi models(like Pi Zero and Pi 4) have OTG capabilities which allowed us to
 ## Enable systemd
 
 Follow this post to replace sysvinit with systemd in your distribution:
-[Yocto: Replace sysvinit with systemd](/2019-08-17/Yocto-Replace-sysvinit-with-systemd/)
+[Yocto: Replace sysvinit with systemd](/2019/08/17/Yocto-Replace-sysvinit-with-systemd/)
 
 ## Add android-tools into build
 

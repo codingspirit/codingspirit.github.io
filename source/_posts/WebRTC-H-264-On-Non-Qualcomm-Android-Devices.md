@@ -14,7 +14,7 @@ User might expiring SDP failure on non-Qualcomm/SAMSUNG chip Android devices whe
 
 ## Fetch Code And Test Build
 
-[WebRTC: Compile Native WebRTC Android SDK](/2021-03-21/WebRTC-Compile-Native-WebRTC-Android-SDK/)
+[WebRTC: Compile Native WebRTC Android SDK](/2021/03/21/WebRTC-Compile-Native-WebRTC-Android-SDK/)
 
 ## Modifications
 
