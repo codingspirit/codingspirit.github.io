@@ -1,34 +1,24 @@
 //Override next/source/css/_schemes/Mist/_header.styl Start
-.header {
-  background: #1C1C1C;
+header.header {
+  background: #1C1C1C
 }
 
 .header-inner {
-  align-items: center;
   background: #1C1C1C;
+  align-items: center;
   display: flex;
-  justify-content: center;
   padding: 20px 0;
-  clearfix();
 
   +mobile() {
     display: block;
-    padding: 10px;
-    width: auto;
+    padding: 10px 0;
   }
 }
 
 .site-meta {
-  float: left;
   line-height: normal;
-  margin-left: -20px;
-
-  +mobile() {
-    margin-left: 10px;
-  }
 
   .brand {
-    background: none;
     padding: 2px 1px;
 
     +mobile() {
@@ -36,40 +26,39 @@
     }
   }
 
-  .site-subtitle {
-    color: #FFFFFF;
-  }
-
   .site-title {
     font-weight: bolder;
-    color: #FFFFFF
+    color: #FFFFFF;
   }
 }
 
-.logo-line-before, .logo-line-after {
+.logo-line {
+  background: #999;
   display: block;
+  height: 2px;
   margin: 0 auto;
-  overflow: hidden;
   width: 75%;
 
   +mobile() {
     display: none;
   }
+}
 
-  i {
-    background: #F8F8FF;
-    display: block;
-    height: 2px;
-    position: relative;
+.use-motion {
+  .logo-line:first-of-type {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
 
-    +mobile() {
-      height: 3px;
-    }
+  .logo-line:last-of-type {
+    transform: scaleX(0);
+    transform-origin: right;
   }
 }
 
 .site-subtitle {
   display: block;
+  color: #FFFFFF;
 }
 //Override next/source/css/_schemes/Mist/_header.styl End
 
