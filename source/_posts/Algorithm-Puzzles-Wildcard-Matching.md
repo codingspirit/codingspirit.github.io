@@ -24,7 +24,7 @@ The matching should cover the entire input string (not partial).
 ## Solving
 
 Using backtrace:
-```python
+```py
 class Solution:
     def isMatch(self, s: str, p: str) -> bool:
         if not s and not p:

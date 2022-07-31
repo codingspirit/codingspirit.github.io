@@ -22,7 +22,7 @@ Do not allocate extra space for another array. You must do this by modifying the
 
 ## Solution
 
-```python
+```py
 class Solution:
     def removeElement(self, nums: List[int], val: int) -> int:
         originalLen = nums.__len__()

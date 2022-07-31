@@ -36,7 +36,7 @@ Output: ["a","b","c"]
 
 ## Solution
 
-```python
+```py
 from typing import List
 
 

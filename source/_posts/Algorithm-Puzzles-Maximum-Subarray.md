@@ -18,7 +18,7 @@ A subarray is a contiguous part of an array.
 
 ## Solution
 
-```python
+```py
 class Solution:
     def maxSubArray(self, nums: List[int]) -> int:
         maxSum = nums[0]

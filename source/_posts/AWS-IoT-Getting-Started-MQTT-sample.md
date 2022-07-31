@@ -5,7 +5,7 @@ tags:
   - MQTT
   - IoT
 date: 2020-04-13 14:40:37
-categories: IoT
+categories: Cloud Service
 ---
 AWS IoT Getting Started: MQTT sample
 <!--more-->

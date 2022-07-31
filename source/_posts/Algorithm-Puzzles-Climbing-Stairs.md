@@ -27,7 +27,7 @@ It's an easy puzzle can be resolved via dynamic programming:
 - dp[3] = dp[1] + dp[2]
 - dp[n] = dp[n-1] + dp[n-2]
 
-```python
+```py
 class Solution:
     def climbStairs(self, n: int) -> int:
         dp = [1, 2]

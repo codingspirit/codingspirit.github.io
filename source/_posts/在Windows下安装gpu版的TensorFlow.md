@@ -38,7 +38,7 @@ pip install tensorflow-gpu==1.5.0
 ```bash
 python
 ```
-```python
+```py
 import tensorflow as tf
 tf.__version__
 sess = tf.Session()

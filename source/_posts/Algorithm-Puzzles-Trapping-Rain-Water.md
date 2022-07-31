@@ -34,7 +34,7 @@ In this case, 6 units of rain water (blue section) are being trapped.
 
 My first solution is using two point with a bar:
 
-```python
+```py
 class Solution:
     sum: int = 0
 
@@ -70,7 +70,7 @@ But this solution will have time complexity up to `O(n*max(height))`, which make
 
 This optimized solution will try to find the two max height blocks:
 
-```python
+```py
 class Solution:
     def trap(self, height: List[int]) -> int:
         if height.__len__() < 3:
