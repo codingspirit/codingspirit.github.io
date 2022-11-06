@@ -79,7 +79,7 @@ class Solution {
 
 然后提交完结果出来了：
 
-![](Algorithm-Puzzles-Regular-Expression-Matching/s1.png)
+![](Algorithm-Puzzles-Regular-Expression-Matching/Regular-Expression-Matching-s1.png)
 
 看来我还是too naive...
 
@@ -117,4 +117,4 @@ class Solution {
     }
 };
 ```
-![](Algorithm-Puzzles-Palindrome-Number/s2.png)
+![](Algorithm-Puzzles-Regular-Expression-Matching/Regular-Expression-Matching-s2.png)
