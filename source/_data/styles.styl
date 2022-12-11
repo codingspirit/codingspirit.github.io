@@ -1,12 +1,26 @@
 //Override next/source/css/_schemes/Mist/_header.styl Start
 .column {
-  background: #222
+  background: #222;
+}
+
+.header {
+  color: white;
+  background: #222;
+  align-items: center;
+  display: flex;
+  padding: 20px 0;
+
+  +mobile() {
+    display: block;
+    padding: 10px 0;
+  }
 }
 
 .site-meta {
   line-height: normal;
 
   .brand {
+    color: white;
     +mobile() {
       display: block;
     }
@@ -30,18 +44,6 @@
   }
 }
 
-.use-motion {
-  .logo-line:first-of-type {
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-
-  .logo-line:last-of-type {
-    transform: scaleX(0);
-    transform-origin: right;
-  }
-}
-
 .site-subtitle {
   display: block;
   color: #999;
@@ -50,35 +52,23 @@
 
 //Override next/source/css/_schemes/Mist/_menu.styl Start
 .menu {
-  margin: 0;
-
-  +mobile() {
-    margin: 10px 0;
-    padding: 0;
-  }
+  padding: 0;
 
   .menu-item {
     margin: 0;
 
     +mobile() {
-      display: block;
       margin-top: 5px;
     }
 
-    a, span.exturl {
+    a {
+      color: white;
       border-radius: 2px;
-      color: #FFFFFF;
-      background: none;
       padding: 0 10px;
-      transition-property: background,color;
+      transition-property: background;
 
       +mobile() {
         text-align: left;
-      }
-
-      &:hover {
-        background: #FFFFFF;
-        color: #000000;
       }
     }
 
@@ -96,7 +86,6 @@
 //Override next/source/css/_common/outline/header/github-banner.styl Start
 .github-corner {
   svg {
-    border: 0;
     color: white;
     fill: blue;
     position: absolute;
@@ -117,13 +106,12 @@ body {
 }
 
 //Override next/source/css/_schemes/Mist/_posts-expand.styl Start
-.posts-expand .post-body img {
-  margin: 0 auto;
-}
 //Override next/source/css/_schemes/Mist/_posts-expand.styl End
 
 //Override next/source/css/_schemes/Mist/_layout.styl Start
 .main-inner {
+  main-container();
+  padding-bottom: $content-padding-bottom;
   margin-top: 30px;
   margin-bottom: 30px;
   border: 10px solid rgba(200, 200, 200, 0.3);
@@ -131,7 +119,6 @@ body {
   background: #F8F8FF;
   opacity: 0.95;
   border-radius: 30px;
-  width: 1000px;
 
   +mobile() {
     width: auto;
@@ -146,23 +133,20 @@ body {
   padding: 10px 0;
 }
 
-.footer-inner {
-  text-align: left;
-  color: #FFFFFF
-
-  +mobile() {
-    text-align: center;
-    width: auto;
-  }
+.footer {
+  background: #222;
+  color: white;
+  padding: 10px 0;
 }
 //Override next/source/css/_schemes/Mist/_layout.styl End
 
-//Override next/source/css/_common/scaffolding/highlight/highlight.styl Start
+//Override next/source/css/_common/scaffolding/highlight/index.styl Start
 code {
   background: $grey-dim;
-  border-radius: $code-border-radius;
-  color: #FFFFFF;
+  color: white;
+  border-radius: 3px;
+  font-size: $table-font-size;
   padding: 2px 4px;
   word-wrap();
 }
-//Override next/source/css/_common/scaffolding/highlight/highlight.styl End
+//Override next/source/css/_common/scaffolding/highlight/index.styl End
