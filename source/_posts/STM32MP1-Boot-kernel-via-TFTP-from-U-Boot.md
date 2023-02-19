@@ -11,7 +11,7 @@ Today I just managed to boot kernel via TFTP on STM32MP1 board but steps I go th
 <!--more-->
 
 ## Pre-requirements
-- TFTP server on PC is up and running([Check here](https://lzqblog.top/2019/05/26/i-MX-setup-TFTP-and-NFS/))
+- TFTP server on PC is up and running([Check here](/2019/05/26/i-MX-setup-TFTP-and-NFS/))
 - Board and PC are in same LAN
 
 ## TFTP folder
