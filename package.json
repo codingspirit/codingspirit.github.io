@@ -16,7 +16,7 @@
     "hexo": "^6.2.0",
     "hexo-asset-image-for-hexo5": "github:codingspirit/hexo-asset-image-for-hexo5",
     "hexo-blog-encrypt": "^3.1.6",
-    "hexo-deployer-cos": "github:codingspirit/hexo-deployer-cos",
+    "hexo-deployer-cos-cdn": "^1.7.1",
     "hexo-deployer-git": "^3.0.0",
     "hexo-generator-archive": "^1.0.0",
     "hexo-generator-category": "^1.0.0",

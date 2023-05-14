@@ -4,12 +4,12 @@
 
 # Site
 title: Coding Spirit
-subtitle: '一位程序员，比较帅的那种'
-description: '毕业于OUC,现就职于Amazon'
+subtitle: "一位程序员，比较帅的那种"
+description: "毕业于OUC,现就职于Amazon"
 keywords:
 author: Coding Spirit
 language: en
-timezone: 'Asia/Shanghai'
+timezone: "Asia/Shanghai"
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
@@ -29,8 +29,8 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
-    - baidu_verify_lHwoaFrtYU.html
-    - google8349d14d52107f3e.html
+  - baidu_verify_lHwoaFrtYU.html
+  - google8349d14d52107f3e.html
 # Writing
 new_post_name: :title.md # File name of new posts
 default_layout: post
@@ -38,7 +38,7 @@ titlecase: false # Transform title into titlecase
 external_link:
   enable: true # Open external links in new tab
   field: site # Apply to the whole site
-  exclude: ''
+  exclude: ""
 filename_case: 0
 render_drafts: false
 post_asset_folder: true
@@ -48,21 +48,21 @@ highlight:
   enable: true
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: ""
   wrap: true
   hljs: false
 prismjs:
   enable: false
   preprocess: true
   line_number: true
-  tab_replace: ''
+  tab_replace: ""
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: ''
+  path: ""
   per_page: 10
   order_by: -date
 
@@ -82,7 +82,7 @@ meta_generator: true
 date_format: YYYY-MM-DD
 time_format: HH:mm:ss
 ## updated_option supports 'mtime', 'date', 'empty'
-updated_option: 'mtime'
+updated_option: "mtime"
 
 # Pagination
 ## Set per_page to 0 to disable pagination
@@ -111,17 +111,26 @@ deploy:
       # gitee: git@gitee.com:lzqgyq/lzqblog.git
     branch: master
 
-  - type: cos
+  - type: cos-cdn
+    cloud: tencent
+    region: ap-hongkong
+    bucket: lzqblog-1301184997
     secretId: AKIDwiKkxynQr690f8PUN4Zsztb7RaZNzPeh
     secretKey: tZ4MSREpERRFrHVXN1SikaEgw0ta6Thk
-    bucket: lzqblog-1301184997
-    region: ap-hongkong
+    cdnEnable: false
+    deleteExtraFiles: true
+
+  # - type: cos
+  #   secretId: AKIDwiKkxynQr690f8PUN4Zsztb7RaZNzPeh
+  #   secretKey: tZ4MSREpERRFrHVXN1SikaEgw0ta6Thk
+  #   bucket: lzqblog-1301184997
+  #   region: ap-hongkong
 
 # export HEXO_ALGOLIA_INDEXING_KEY=81c90fc42aaa863e47b1049dd1b739ce; hexo algolia
 algolia:
-  applicationID: '4PWJG0L702'
-  apiKey: 'cf1d0551cf23d3f0ddd2703fb916230c'
-  indexName: 'blog'
+  applicationID: "4PWJG0L702"
+  apiKey: "cf1d0551cf23d3f0ddd2703fb916230c"
+  indexName: "blog"
   chunkSize: 5000
 
 search:
@@ -146,6 +155,6 @@ encrypt: # hexo-blog-encrypt
   abstract: Here's something encrypted, password is required to continue reading.
   message: Hey, password is required here.
   tags:
-  - {name: 加密, password: s..g}
+    - { name: 加密, password: s..g }
   wrong_pass_message: Oh, this is an invalid password. Check and try again, please.
   wrong_hash_message: Oh, these decrypted content cannot be verified, but you can still have a look.
