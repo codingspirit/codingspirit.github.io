@@ -12,7 +12,7 @@
     "version": "6.3.0"
   },
   "dependencies": {
-    "@next-theme/plugins": "^8.14.0",
+    "@next-theme/plugins": "^8.18.0",
     "hexo": "^6.2.0",
     "hexo-asset-image-for-hexo5": "github:codingspirit/hexo-asset-image-for-hexo5",
     "hexo-blog-encrypt": "^3.1.6",
