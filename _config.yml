@@ -114,17 +114,11 @@ deploy:
   - type: cos-cdn
     cloud: tencent
     region: ap-hongkong
-    bucket: lzqblog-1301184997
+    bucket: lzqblog2023-1301184997
     secretId: AKIDwiKkxynQr690f8PUN4Zsztb7RaZNzPeh
     secretKey: tZ4MSREpERRFrHVXN1SikaEgw0ta6Thk
     cdnEnable: false
     deleteExtraFiles: true
-
-  # - type: cos
-  #   secretId: AKIDwiKkxynQr690f8PUN4Zsztb7RaZNzPeh
-  #   secretKey: tZ4MSREpERRFrHVXN1SikaEgw0ta6Thk
-  #   bucket: lzqblog-1301184997
-  #   region: ap-hongkong
 
 # export HEXO_ALGOLIA_INDEXING_KEY=81c90fc42aaa863e47b1049dd1b739ce; hexo algolia
 algolia:
