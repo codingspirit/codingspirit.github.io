@@ -4914,6 +4914,94 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       </tags>
   </entry>
   <entry>
+    <title>Algorithm Puzzles: Add Digits</title>
+    <url>/2023/08/13/Algorithm-Puzzles-Add-Digits/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Add Digits</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>Given an integer num, repeatedly add all its digits until the result has only one digit, and return it.</p>
+<p>Example 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: num = 38</span><br><span class="line">Output: 2</span><br><span class="line">Explanation: The process is</span><br><span class="line">38 --&gt; 3 + 8 --&gt; 11</span><br><span class="line">11 --&gt; 1 + 1 --&gt; 2 </span><br><span class="line">Since 2 has only one digit, return it.</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>There is a math pattern in this puzzle:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">addDigits</span><span class="params">(<span class="type">const</span> <span class="type">int</span> num)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ret = num % <span class="number">9</span>;</span><br><span class="line">        <span class="keyword">return</span> ret == <span class="number">0</span> &amp;&amp; num != <span class="number">0</span> ? <span class="number">9</span> : ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C.: O(1)<br>S.C.: O(1)</p>
+<p><img data-src="/2023/08/13/Algorithm-Puzzles-Add-Digits/Algorithm-Puzzles-Add-Digits-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm Puzzles: LRU Cache</title>
+    <url>/2023/08/13/Algorithm-Puzzles-LRU-Cache/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: LRU Cache</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>Design a data structure that follows the constraints of a Least Recently Used (LRU) cache.</p>
+<p>Implement the LRUCache class:</p>
+<p>LRUCache(int capacity) Initialize the LRU cache with positive size capacity.<br>int get(int key) Return the value of the key if the key exists, otherwise return -1.<br>void put(int key, int value) Update the value of the key if the key exists. Otherwise, add the key-value pair to the cache. If the number of keys exceeds the capacity from this operation, evict the least recently used key.<br>The functions get and put must each run in O(1) average time complexity.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">LRUCache</span> <span class="keyword">final</span> &#123;</span><br><span class="line">  <span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">LRUCache</span>(<span class="type">const</span> <span class="type">int</span> capacity) : <span class="built_in">hashTable</span>(capacity), <span class="built_in">usages</span>(capacity), <span class="built_in">capacity</span>(capacity) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">get</span><span class="params">(<span class="type">const</span> <span class="type">int</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (hashTable.<span class="built_in">contains</span>(key)) &#123;</span><br><span class="line">            lru.<span class="built_in">push</span>(key);</span><br><span class="line">            usages[key]++;</span><br><span class="line">            <span class="keyword">return</span> hashTable[key];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">put</span><span class="params">(<span class="type">const</span> <span class="type">int</span> key, <span class="type">const</span> <span class="type">int</span> value)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (hashTable.<span class="built_in">size</span>() == capacity &amp;&amp; !hashTable.<span class="built_in">contains</span>(key)) &#123;</span><br><span class="line">            <span class="keyword">while</span> (usages[lru.<span class="built_in">front</span>()] &gt; <span class="number">1</span>) &#123;</span><br><span class="line">                usages[lru.<span class="built_in">front</span>()]--;</span><br><span class="line">                lru.<span class="built_in">pop</span>();</span><br><span class="line">            &#125;</span><br><span class="line">            hashTable.<span class="built_in">erase</span>(lru.<span class="built_in">front</span>());</span><br><span class="line">            usages[lru.<span class="built_in">front</span>()]--;</span><br><span class="line">            lru.<span class="built_in">pop</span>();</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        lru.<span class="built_in">push</span>(key);</span><br><span class="line">        usages[key]++;</span><br><span class="line">        hashTable[key] = value;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">private</span>:</span><br><span class="line">    std::unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; hashTable;</span><br><span class="line">    std::unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; usages;</span><br><span class="line">    std::queue&lt;<span class="type">int</span>&gt; lru;</span><br><span class="line">    <span class="type">const</span> <span class="type">size_t</span> capacity;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C.(average): O(1)<br>S.C.: O(N)</p>
+<p><img data-src="/2023/08/13/Algorithm-Puzzles-LRU-Cache/Algorithm-Puzzles-LRU-Cache-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm Puzzles: Maximum Depth of Binary Tree</title>
+    <url>/2023/08/13/Algorithm-Puzzles-Maximum-Depth-of-Binary-Tree/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Maximum Depth of Binary Tree</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>Given the root of a binary tree, return its maximum depth.</p>
+<p>A binary tree’s maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>It’ an easy puzzle can be resolved via DFS:</p>
+<figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">maxDepth</span><span class="params">(<span class="type">const</span> TreeNode* root)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="built_in">dfs</span>(root, <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">dfs</span><span class="params">(<span class="type">const</span> TreeNode* root, <span class="type">const</span> <span class="type">int</span> depth)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="type">int</span> ret;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(root == <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> depth - <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        ret = std::<span class="built_in">max</span>(<span class="built_in">dfs</span>(root-&gt;left, depth + <span class="number">1</span>), <span class="built_in">dfs</span>(root-&gt;right, depth + <span class="number">1</span>));</span><br><span class="line"> </span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C.: O(n)<br>S.C.: O(n)</p>
+<p><img data-src="/2023/08/13/Algorithm-Puzzles-Maximum-Depth-of-Binary-Tree/Algorithm-Puzzles-Maximum-Depth-of-Binary-Tree-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm Puzzles: Palindrome Linked List</title>
+    <url>/2023/08/13/Algorithm-Puzzles-Palindrome-Linked-List/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Palindrome Linked List</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>Given the head of a singly linked list, return true if it is a palindrome or false otherwise.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isPalindrome</span><span class="params">(ListNode* head)</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        std::vector&lt;<span class="type">int</span>&gt; que;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(head) &#123;</span><br><span class="line">            que.<span class="built_in">emplace_back</span>(head-&gt;val);</span><br><span class="line">            head = head-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="type">const</span> <span class="type">size_t</span> queLen = que.<span class="built_in">size</span>();</span><br><span class="line">        <span class="type">const</span> <span class="type">size_t</span> halfLen = queLen / <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">0</span>; i &lt; halfLen; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span>(que[i] != que[queLen - i - <span class="number">1</span>])&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C.: O(2N)<br>S.C.: O(N)</p>
+<p><img data-src="/2023/08/13/Algorithm-Puzzles-Palindrome-Linked-List/Algorithm-Puzzles-Palindrome-Linked-List-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>black hole</title>
     <url>/blackhole.html</url>
     <content><![CDATA[<html>
