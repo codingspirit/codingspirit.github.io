@@ -5027,6 +5027,29 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       </tags>
   </entry>
   <entry>
+    <title>Algorithm Puzzles: Merge Sorted Array</title>
+    <url>/2023/09/09/Algorithm-Puzzles-Merge-Sorted-Array/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Merge Sorted Array</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>You are given two integer arrays nums1 and nums2, sorted in non-decreasing order, and two integers m and n, representing the number of elements in nums1 and nums2 respectively.</p>
+<p>Merge nums1 and nums2 into a single array sorted in non-decreasing order.</p>
+<p>The final sorted array should not be returned by the function, but instead be stored inside the array nums1. To accommodate this, nums1 has a length of m + n, where the first m elements denote the elements that should be merged, and the last n elements are set to 0 and should be ignored. nums2 has a length of n.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">merge</span><span class="params">(vector&lt;<span class="type">int</span>&gt;&amp; nums1, <span class="type">int</span> m, vector&lt;<span class="type">int</span>&gt;&amp; nums2, <span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(m == <span class="number">0</span>) &#123;</span><br><span class="line">            nums1 = nums2;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(n == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> ret = std::<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;();</span><br><span class="line">        <span class="type">int</span> i = <span class="number">0</span>, j = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(; i &lt; m &amp;&amp; j &lt; n;)&#123;</span><br><span class="line">            <span class="keyword">if</span>(nums1[i] &lt;= nums2[j]) &#123;</span><br><span class="line">                ret.<span class="built_in">push_back</span>(nums1[i]);</span><br><span class="line">                i++;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                ret.<span class="built_in">push_back</span>(nums2[j]);</span><br><span class="line">                j++;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(i != m) &#123;</span><br><span class="line">            ret.<span class="built_in">insert</span>(ret.<span class="built_in">end</span>(), nums1.<span class="built_in">begin</span>() + i, nums1.<span class="built_in">begin</span>() + m);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(j != n) &#123;</span><br><span class="line">            ret.<span class="built_in">insert</span>(ret.<span class="built_in">end</span>(), nums2.<span class="built_in">begin</span>() + j, nums2.<span class="built_in">end</span>());</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        nums1 = ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p><img data-src="/2023/09/09/Algorithm-Puzzles-Merge-Sorted-Array/Algorithm-Puzzles-Merge-Sorted-Array-s1.png"></p>
+<p>Not sure why this brutal force solution can beats 100% people…</p>
+<p><img data-src="/2023/09/09/Algorithm-Puzzles-Merge-Sorted-Array/Algorithm-Puzzles-Merge-Sorted-Array-brutal-force.jpg"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>black hole</title>
     <url>/blackhole.html</url>
     <content><![CDATA[<html>
