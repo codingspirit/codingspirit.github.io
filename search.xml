@@ -5002,6 +5002,31 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       </tags>
   </entry>
   <entry>
+    <title>Algorithm Puzzles: Pascal&#39;s Triangle</title>
+    <url>/2023/09/09/Algorithm-Puzzles-Pascal-s-Triangle/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Pascal’s Triangle</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>Given an integer numRows, return the first numRows of Pascal’s triangle.</p>
+<p>In Pascal’s triangle, each number is the sum of the two numbers directly above it as shown:</p>
+<p>Example 1:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: numRows = 5</span><br><span class="line">Output: [[1],[1,1],[1,2,1],[1,3,3,1],[1,4,6,4,1]]</span><br></pre></td></tr></table></figure>
+<p>Example 2:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Input: numRows = 1</span><br><span class="line">Output: [[1]]</span><br></pre></td></tr></table></figure>
+
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; <span class="built_in">generate</span>(<span class="type">int</span> numRows) &#123;</span><br><span class="line">        vector&lt;vector&lt;<span class="type">int</span>&gt;&gt; ret&#123;&#123;<span class="number">1</span>&#125;&#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(numRows &gt;= <span class="number">2</span>) &#123;</span><br><span class="line">            ret.<span class="built_in">emplace_back</span>(std::<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(<span class="number">2</span>, <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i = <span class="number">2</span>; i &lt; numRows; ++i) &#123;</span><br><span class="line">            ret.<span class="built_in">emplace_back</span>(std::<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;(ret[i<span class="number">-1</span>].<span class="built_in">size</span>() + <span class="number">1</span>, <span class="number">1</span>));</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> j = <span class="number">1</span>; j &lt; ret[i].<span class="built_in">size</span>() - <span class="number">1</span>; j++) &#123;</span><br><span class="line">                ret[i][j] = ret[i<span class="number">-1</span>][j<span class="number">-1</span>] + ret[i<span class="number">-1</span>][j];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> ret;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C.: O(N * N)</p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>black hole</title>
     <url>/blackhole.html</url>
     <content><![CDATA[<html>

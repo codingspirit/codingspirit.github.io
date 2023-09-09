@@ -91,7 +91,7 @@
 
 
 <nav class="site-nav">
-  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">46</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">10</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">181</span></a></li>
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">46</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">10</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">182</span></a></li>
       <li class="menu-item menu-item-search">
         <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
         </a>
@@ -156,7 +156,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">181</span>
+          <span class="site-state-item-count">182</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -202,6 +202,113 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2017/12/06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/coding_spirit.jpg">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC,现就职于Amazon">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Coding Spirit">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2017/12/06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/" class="post-title-link" itemprop="url">在Android Things上使用TTS及使用Google Assistant遇到的问题</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2017-12-06 16:37:03" itemprop="dateCreated datePublished" datetime="2017-12-06T16:37:03+08:00">2017-12-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2023-08-13 16:39:34" itemprop="dateModified" datetime="2023-08-13T16:39:34+08:00">2023-08-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>290</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>1 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>  智能音响有两个重要功能:“说”和“听”。在Android Things上我们可以通过TextToSpeech和Google Assistant来实现上述功能。TTS的实现比较容易，而Google Assistant就比较麻烦了，目前我遇到的问题是Google Assistant能听懂我说什么，却不能给出答案。。还是写个日志记录一下吧。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2017/12/06/%E5%9C%A8Android-Things%E4%B8%8A%E4%BD%BF%E7%94%A8TTS%E5%8F%8A%E4%BD%BF%E7%94%A8Google-Assistant%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -1144,113 +1251,6 @@
           <!--noindex-->
             <div class="post-button">
               <a class="btn" href="/2017/11/05/%E9%A1%B9%E7%9B%AE%E6%80%BB%E7%BB%93%EF%BC%88%E4%B8%80%EF%BC%89%EF%BC%9A%E5%B9%B3%E8%A1%A1%E8%BD%A6%E7%9A%84%E8%AE%BE%E8%AE%A1%E6%A6%82%E8%BF%B0/#more" rel="contents">
-                Read more &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-
-    <footer class="post-footer">
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-</div>
-
-
-
-
-    
-
-
-<div class="post-block">
-  
-  
-
-  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
-    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2017/11/01/%E5%B8%B8%E7%94%A8%E7%9A%84Regex/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/coding_spirit.jpg">
-      <meta itemprop="name" content="Coding Spirit">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Coding Spirit">
-      <meta itemprop="description" content="毕业于OUC,现就职于Amazon">
-    </span>
-
-    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="undefined | Coding Spirit">
-      <meta itemprop="description" content="">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          <a href="/2017/11/01/%E5%B8%B8%E7%94%A8%E7%9A%84Regex/" class="post-title-link" itemprop="url">常用的Regex</a>
-        </h2>
-
-        <div class="post-meta-container">
-          <div class="post-meta">
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar"></i>
-      </span>
-      <span class="post-meta-item-text">Posted on</span>
-
-      <time title="Created: 2017-11-01 09:54:51" itemprop="dateCreated datePublished" datetime="2017-11-01T09:54:51+08:00">2017-11-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2023-08-13 16:39:34" itemprop="dateModified" datetime="2023-08-13T16:39:34+08:00">2023-08-13</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-folder"></i>
-      </span>
-      <span class="post-meta-item-text">In</span>
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/%E7%BC%96%E7%A8%8B%E7%9B%B8%E5%85%B3/" itemprop="url" rel="index"><span itemprop="name">编程相关</span></a>
-        </span>
-    </span>
-
-  
-    <span class="post-meta-break"></span>
-    <span class="post-meta-item" title="Word count in article">
-      <span class="post-meta-item-icon">
-        <i class="far fa-file-word"></i>
-      </span>
-      <span class="post-meta-item-text">Word count in article: </span>
-      <span>301</span>
-    </span>
-    <span class="post-meta-item" title="Reading time">
-      <span class="post-meta-item-icon">
-        <i class="far fa-clock"></i>
-      </span>
-      <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
-    </span>
-</div>
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-          <p>当进行数据分析时，我们常使用正则表达式爬取字符串得到目标数据。（有点爬虫的感觉）</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/11/01/%E5%B8%B8%E7%94%A8%E7%9A%84Regex/#more" rel="contents">
                 Read more &raquo;
               </a>
             </div>
