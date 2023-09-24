@@ -5073,6 +5073,40 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       </tags>
   </entry>
   <entry>
+    <title>Java: Compress JSON String</title>
+    <url>/2023/09/24/Java-Compress-JSON-String/</url>
+    <content><![CDATA[<p>Create compact JSON string from beautified JSON string</p>
+<span id="more"></span>
+
+<figure class="highlight java"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.ObjectMapper;</span><br><span class="line"><span class="keyword">import</span> com.fasterxml.jackson.databind.JsonNode;</span><br><span class="line"></span><br><span class="line"><span class="type">var</span> <span class="variable">jsonNode</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">ObjectMapper</span>().readValue(longJsonString, JsonNode.class);</span><br><span class="line"><span class="type">String</span> <span class="variable">compressedJsonString</span> <span class="operator">=</span> jsonNode.toString();</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Java</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Python: Bypass Coverage For @overload Methods</title>
+    <url>/2023/09/24/Python-Bypass-Coverage-For-overload-Methods/</url>
+    <content><![CDATA[<p>In Python, we can use <code>@overload</code> decorator from <code>typing</code> to mark overloading methods. If project has unit test enabled, you may find that it’s impossible to cover those methods with <code>@overload</code> decorator in coverage reports. In this case we have to bypass coverage checking for those overloading methods.</p>
+<span id="more"></span>
+
+<p>In <code>setup.cfg</code>:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[coverage:report]</span><br><span class="line">exclude_lines =</span><br><span class="line">    pragma: not covered</span><br><span class="line">    @overload</span><br></pre></td></tr></table></figure>
+
+<p>Or in <code>pyproject.toml</code>:</p>
+<figure class="highlight toml"><table><tr><td class="code"><pre><span class="line"><span class="section">[tool.coverage.report]</span></span><br><span class="line"><span class="attr">exclude_lines</span> =</span><br><span class="line">    pragma: not covered</span><br><span class="line">    @overload</span><br></pre></td></tr></table></figure>
+]]></content>
+      <categories>
+        <category>编程相关</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>black hole</title>
     <url>/blackhole.html</url>
     <content><![CDATA[<html>
