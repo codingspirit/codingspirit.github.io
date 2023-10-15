@@ -19,16 +19,16 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"lzqblog.top","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.18.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12},"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Algorithm Puzzles everyday every week sometimes: Algorithm Puzzles: Happy Number">
+    <meta name="description" content="Algorithm Puzzles everyday every week sometimes: Happy Number">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Algorithm Puzzles: Happy Number">
 <meta property="og:url" content="https://lzqblog.top/2023/10/15/Algorithm-Puzzles-Happy-Number/index.html">
 <meta property="og:site_name" content="Coding Spirit">
-<meta property="og:description" content="Algorithm Puzzles everyday every week sometimes: Algorithm Puzzles: Happy Number">
+<meta property="og:description" content="Algorithm Puzzles everyday every week sometimes: Happy Number">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://lzqblog.top/2023/10/15/Algorithm-Puzzles-Happy-Number/Algorithm-Puzzles-Happy-Number-s1.png">
 <meta property="article:published_time" content="2023-10-15T03:34:02.000Z">
-<meta property="article:modified_time" content="2023-10-15T03:38:12.359Z">
+<meta property="article:modified_time" content="2023-10-15T03:42:42.369Z">
 <meta property="article:author" content="Coding Spirit">
 <meta property="article:tag" content="Algorithm">
 <meta property="article:tag" content="C&amp;#43;&amp;#43;">
@@ -249,7 +249,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2023-10-15 11:34:02 / Modified: 11:38:12" itemprop="dateCreated datePublished" datetime="2023-10-15T11:34:02+08:00">2023-10-15</time>
+      <time title="Created: 2023-10-15 11:34:02 / Modified: 11:42:42" itemprop="dateCreated datePublished" datetime="2023-10-15T11:34:02+08:00">2023-10-15</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -275,7 +275,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>70</span>
+      <span>71</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -292,7 +292,7 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Algorithm Puzzles: Happy Number</p>
+    <div class="post-body" itemprop="articleBody"><p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Happy Number</p>
 <span id="more"></span>
 <h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a target="_blank" rel="noopener" href="https://leetcode.com/">leetcode</a>:</p>
 <h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isHappy</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        std::unordered_set&lt;<span class="type">int</span>&gt; occurredSet;</span><br><span class="line">        occurredSet.<span class="built_in">insert</span>(n);</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="type">int</span> digit = n % <span class="number">10</span>;</span><br><span class="line">           sum += (digit * digit);</span><br><span class="line">           n /= <span class="number">10</span>;</span><br><span class="line">           <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="keyword">if</span> (sum == <span class="number">1</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (occurredSet.<span class="built_in">count</span>(sum) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               occurredSet.<span class="built_in">insert</span>(sum);</span><br><span class="line">               n = sum;</span><br><span class="line">               sum = <span class="number">0</span>;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
