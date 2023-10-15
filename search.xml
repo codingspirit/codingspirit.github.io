@@ -5127,6 +5127,46 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       </tags>
   </entry>
   <entry>
+    <title>Algorithm Puzzles: Happy Number</title>
+    <url>/2023/10/15/Algorithm-Puzzles-Happy-Number/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Algorithm Puzzles: Happy Number</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">bool</span> <span class="title">isHappy</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">        std::unordered_set&lt;<span class="type">int</span>&gt; occurredSet;</span><br><span class="line">        occurredSet.<span class="built_in">insert</span>(n);</span><br><span class="line">        <span class="type">int</span> sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(n &gt; <span class="number">0</span>) &#123;</span><br><span class="line">           <span class="type">int</span> digit = n % <span class="number">10</span>;</span><br><span class="line">           sum += (digit * digit);</span><br><span class="line">           n /= <span class="number">10</span>;</span><br><span class="line">           <span class="keyword">if</span> (n == <span class="number">0</span>) &#123;</span><br><span class="line">               <span class="keyword">if</span> (sum == <span class="number">1</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               <span class="keyword">if</span> (occurredSet.<span class="built_in">count</span>(sum) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                   <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">               &#125;</span><br><span class="line">               occurredSet.<span class="built_in">insert</span>(sum);</span><br><span class="line">               n = sum;</span><br><span class="line">               sum = <span class="number">0</span>;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C.: O(N)<br>S.C.: O(N)</p>
+<p><img data-src="/2023/10/15/Algorithm-Puzzles-Happy-Number/Algorithm-Puzzles-Happy-Number-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm Puzzles: Majority Element</title>
+    <url>/2023/10/15/Algorithm-Puzzles-Majority-Element/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Majority Element</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>Given an array nums of size n, return the majority element.</p>
+<p>The majority element is the element that appears more than ⌊n &#x2F; 2⌋ times. You may assume that the majority element always exists in the array.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">majorityElement</span><span class="params">(<span class="type">const</span> vector&lt;<span class="type">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        std::unordered_map&lt;<span class="type">int</span>, <span class="type">int</span>&gt; map;</span><br><span class="line">        <span class="type">int</span> currentMajority = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> iter = nums.<span class="built_in">begin</span>(); iter != nums.<span class="built_in">end</span>(); iter++) &#123;</span><br><span class="line">            map[*iter]++;</span><br><span class="line">            <span class="keyword">if</span>(map[*iter] &gt; nums.<span class="built_in">size</span>() / <span class="number">2</span>) &#123;</span><br><span class="line">                currentMajority = *iter;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> currentMajority;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C.: O(N)<br>S.C.: O(N)</p>
+<p><img data-src="/2023/10/15/Algorithm-Puzzles-Majority-Element/Algorithm-Puzzles-Majority-Element-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>black hole</title>
     <url>/blackhole.html</url>
     <content><![CDATA[<html>
