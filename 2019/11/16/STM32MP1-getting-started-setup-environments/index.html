@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon.ico">
+  <link rel="mask-icon" href="/images/favicon.ico" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"lzqblog.top","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"always","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":null},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will se">
+<meta property="og:type" content="article">
+<meta property="og:title" content="STM32MP1 getting started: setup environments">
+<meta property="og:url" content="https://lzqblog.top/2019/11/16/STM32MP1-getting-started-setup-environments/index.html">
+<meta property="og:site_name" content="Coding Spirit">
+<meta property="og:description" content="I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will se">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2019-11-16T17:14:45.000Z">
+<meta property="article:modified_time" content="2024-05-12T18:42:46.747Z">
+<meta property="article:author" content="Coding Spirit">
+<meta property="article:tag" content="Linux">
+<meta property="article:tag" content="Yocto">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://lzqblog.top/2019/11/16/STM32MP1-getting-started-setup-environments/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://lzqblog.top/2019/11/16/STM32MP1-getting-started-setup-environments/","path":"2019/11/16/STM32MP1-getting-started-setup-environments/","title":"STM32MP1 getting started: setup environments"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>STM32MP1 getting started: setup environments | Coding Spirit</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-154617667-1"></script>
+  <script class="next-config" data-name="google_analytics" type="application/json">{"tracking_id":"UA-154617667-1","only_pageview":false,"measure_protocol_api_secret":null}</script>
+  <script src="/js/third-party/analytics/google-analytics.js"></script>
+
+  <script src="/js/third-party/analytics/baidu-analytics.js"></script>
+  <script async src="https://hm.baidu.com/hm.js?72cd6a3fea1f363602e7229a9609f5d0"></script>
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Coding Spirit</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">一位程序员，比较帅的那种</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>Tags<span class="badge">46</span></a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>Categories<span class="badge">10</span></a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>Archives<span class="badge">192</span></a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Choose-the-suitable-base-software-package"><span class="nav-number">1.</span> <span class="nav-text">Choose the suitable base software package</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Initialize-repo"><span class="nav-number">2.</span> <span class="nav-text">Initialize repo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Package-structure"><span class="nav-number">3.</span> <span class="nav-text">Package structure</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Test-building-image"><span class="nav-number">4.</span> <span class="nav-text">Test building image</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Environment-setup"><span class="nav-number">4.1.</span> <span class="nav-text">Environment setup</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Trigger-building"><span class="nav-number">4.2.</span> <span class="nav-text">Trigger building</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#USB-Flash"><span class="nav-number">5.</span> <span class="nav-text">USB Flash</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Coding Spirit"
+      src="/images/coding_spirit.jpg">
+  <p class="site-author-name" itemprop="name">Coding Spirit</p>
+  <div class="site-description" itemprop="description">毕业于OUC,现就职于Amazon</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">192</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">46</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/codingspirit" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;codingspirit" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:596544399@qq.com" title="E-Mail → mailto:596544399@qq.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+
+      
+        
+          <div id="musicPlayerPost">
+            <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=28232175&auto=0&height=66"></iframe>
+          </div>
+        
+      
+      
+
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://lzqblog.top/2019/11/16/STM32MP1-getting-started-setup-environments/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/coding_spirit.jpg">
+      <meta itemprop="name" content="Coding Spirit">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Coding Spirit">
+      <meta itemprop="description" content="毕业于OUC,现就职于Amazon">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="STM32MP1 getting started: setup environments | Coding Spirit">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          STM32MP1 getting started: setup environments
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2019-11-17 01:14:45" itemprop="dateCreated datePublished" datetime="2019-11-17T01:14:45+08:00">2019-11-17</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">Edited on</span>
+      <time title="Modified: 2024-05-13 02:42:46" itemprop="dateModified" datetime="2024-05-13T02:42:46+08:00">2024-05-13</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E7%B3%BB%E7%BB%9F%E6%9E%84%E5%BB%BA/" itemprop="url" rel="index"><span itemprop="name">系统构建</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>653</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>2 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><p>I’m planing to do some research on ST newest MPU series: STM32MP1. It’s a Cortex A7(solo or dual core) + M4 solution, not very powerful but the price might be very competitive. In this post we will setup the development environments.</p>
+<span id="more"></span>
+
+<h2 id="Choose-the-suitable-base-software-package"><a href="#Choose-the-suitable-base-software-package" class="headerlink" title="Choose the suitable base software package"></a>Choose the suitable base software package</h2><p>There are 3 basic software packages provided by ST:</p>
+<ul>
+<li>Starter Package(For evaluation)</li>
+<li>Developer Package(For limited modification and application development)</li>
+<li>Distribution Package(For creating custom distribution)</li>
+</ul>
+<p>Similar with Qualcomm solutions, there are two packages are available for development purpose. In my scenario I will use Distribution Package for sure, so the following parts of this post is about how to setup environments for Developer Package based development.</p>
+<p>BTW the experiences I got during Qualcomm apq8009 based SoC really sucks… Their packages just like a huge shit mountain.</p>
+<h2 id="Initialize-repo"><a href="#Initialize-repo" class="headerlink" title="Initialize repo"></a>Initialize repo</h2><p>If you are new to Yocto, you need to install some packages before start(i.e. <strong>repo</strong>)</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> openstlinux-4.19-thud-mp1-19-10-09 &amp;&amp; <span class="built_in">cd</span> openstlinux-4.19-thud-mp1-19-10-09</span><br><span class="line">repo init -u https://github.com/STMicroelectronics/oe-manifest.git -b refs/tags/openstlinux-4.19-thud-mp1-19-10-09</span><br><span class="line">repo <span class="built_in">sync</span></span><br></pre></td></tr></table></figure>
+<h2 id="Package-structure"><a href="#Package-structure" class="headerlink" title="Package structure"></a>Package structure</h2><p>From <a target="_blank" rel="noopener" href="https://wiki.st.com/stm32mpu/wiki/STM32MP1_Distribution_Package">ST WIKI</a>:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">openstlinux-4.19-thud-mp1-19-10-09  OpenSTLinux distribution</span><br><span class="line">├── layers </span><br><span class="line">│    ├── meta-openembedded                Collection of layers <span class="keyword">for</span> the OpenEmbedded-Core universe (OpenEmbedded standard)</span><br><span class="line">│    ├── meta-qt5                         QT5 layer <span class="keyword">for</span> OpenEmbedded (standard)</span><br><span class="line">│    ├── meta-st</span><br><span class="line">│    │   ├── meta-st-openstlinux          STMicroelectronics layer that contains the frameworks and images settings <span class="keyword">for</span> the OpenSTLinux distribution</span><br><span class="line">│    │   ├── meta-st-stm32mp              STMicroelectronics layer that contains the description of the BSP <span class="keyword">for</span> the STM32 MPU devices</span><br><span class="line">│    │   │   ├── recipes-bsp</span><br><span class="line">│    │   │   │   ├── alsa                 Recipes <span class="keyword">for</span> ALSA control configuration</span><br><span class="line">│    │   │   │   ├── drivers              Recipes <span class="keyword">for</span> Vivante GCNANO GPU kernel drivers</span><br><span class="line">│    │   │   │   ├── trusted-firmware-a   Recipes <span class="keyword">for</span> TF-A</span><br><span class="line">│    │   │   │   └── u-boot               Recipes <span class="keyword">for</span> U-Boot</span><br><span class="line">│    │   │   ├── recipes-extended</span><br><span class="line">│    │   │   │   ├── linux-examples       Recipes <span class="keyword">for</span> Linux examples <span class="keyword">for</span> STM32 MPU devices</span><br><span class="line">│    │   │   │   ├── m4coredump           Recipes <span class="keyword">for</span> script to manage coredump of cortexM4</span><br><span class="line">│    │   │   │   └── m4projects           Recipes <span class="keyword">for</span> firmware examples <span class="keyword">for</span> Cortex M4</span><br><span class="line">│    │   │   ├── recipes-graphics</span><br><span class="line">│    │   │   │   ├── gcnano-userland      Recipes <span class="keyword">for</span> Vivante libraries OpenGL ES, OpenVG and EGL (multi backend)</span><br><span class="line">│    │   │   │   └── [...]</span><br><span class="line">│    │   │   ├── recipes-kernel</span><br><span class="line">│    │   │   │   ├── linux                Recipes <span class="keyword">for</span> Linux kernel</span><br><span class="line">│    │   │   │   └── linux-firmware       Recipes <span class="keyword">for</span> Linux firmwares (example, Bluetooth firmware)</span><br><span class="line">│    │   │   ├── recipes-security</span><br><span class="line">│    │   │   │   └── optee                Recipes <span class="keyword">for</span> OPTEE</span><br><span class="line">│    │   │   ├── recipes-st</span><br><span class="line">│    │   │   │   └── images               Recipes <span class="keyword">for</span> the bootfs and userfs partitions binaries</span><br><span class="line">│    │   │   └── [...]</span><br><span class="line">│    │   ├── meta-st-stm32mp-addons       STMicroelectronics layer that helps managing the STM32CubeMX integration</span><br><span class="line">│    │   └── scripts</span><br><span class="line">│    │       ├── envsetup.sh              Environment setup script <span class="keyword">for</span> Distribution Package</span><br><span class="line">│    │       └── [...]</span><br><span class="line">│    ├── meta-timesys                     Timesys layer <span class="keyword">for</span> OpenEmbedded (standard)</span><br><span class="line">│    └── openembedded-core                Core metadata <span class="keyword">for</span> current versions of OpenEmbedded (standard)</span><br></pre></td></tr></table></figure>
+
+<h2 id="Test-building-image"><a href="#Test-building-image" class="headerlink" title="Test building image"></a>Test building image</h2><h3 id="Environment-setup"><a href="#Environment-setup" class="headerlink" title="Environment setup"></a>Environment setup</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">DISTRO=openstlinux-weston MACHINE=stm32mp1 <span class="built_in">source</span> layers/meta-st/scripts/envsetup.sh</span><br></pre></td></tr></table></figure>
+<p>If you want to test without wayland or x11 support, using <strong>DISTRO&#x3D;openstlinux-eglfs MACHINE&#x3D;st-image-core</strong> instead.</p>
+<p>If build folder has been created, using blow command to re-use it:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> layers/meta-st/scripts/envsetup.sh build-openstlinuxweston-stm32mp1/</span><br></pre></td></tr></table></figure>
+<h3 id="Trigger-building"><a href="#Trigger-building" class="headerlink" title="Trigger building"></a>Trigger building</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bitbake st-image-weston</span><br></pre></td></tr></table></figure>
+<p><strong>st-image-core</strong> is also available if you want to create a console only image.</p>
+<h2 id="USB-Flash"><a href="#USB-Flash" class="headerlink" title="USB Flash"></a>USB Flash</h2><p>USB flash need to use <a target="_blank" rel="noopener" href="https://my.st.com/content/my_st_com/en/products/development-tools/software-development-tools/stm32-software-development-tools/stm32-programmers/stm32cubeprog.html">STM32CubeProgrammer</a>. Device need to switched as usb flash mode as well.</p>
+<p>After installation, using <strong>STM32_Programmer_CLI</strong> to check if device can be detected:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$ sudo STM32_Programmer_CLI -l usb</span><br><span class="line">      -------------------------------------------------------------------</span><br><span class="line">                        STM32CubeProgrammer v2.2.1                  </span><br><span class="line">      -------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line">=====  DFU Interface   =====</span><br><span class="line"></span><br><span class="line">Total number of available STM32 device <span class="keyword">in</span> DFU mode: 1</span><br><span class="line"></span><br><span class="line">  Device Index           : USB1</span><br><span class="line">  USB Bus Number         : 001</span><br><span class="line">  USB Address Number     : 004</span><br><span class="line">  Product ID             : DFU <span class="keyword">in</span> HS Mode @Device ID /0x500, @Revision ID /0x0000</span><br><span class="line">  Serial number          : 004800293338511139303435</span><br><span class="line">  Firmware version       : 0x0110</span><br><span class="line">  Device ID              : 0x0500</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>Notice: You may need to create a soft link from <em>$HOME&#x2F;STMicroelectronics&#x2F;STM32Cube&#x2F;STM32CubeProgrammer&#x2F;bin&#x2F;STM32_Programmer_CLI</em></p>
+</blockquote>
+<p>You also can add an udev rule to allow connection without su:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo <span class="built_in">cp</span> <span class="variable">$HOME</span>/STMicroelectronics/STM32Cube/STM32CubeProgrammer/Drivers/rules/50-usb-conf.rules /etc/udev/rules.d/</span><br><span class="line">sudo service udev restart</span><br></pre></td></tr></table></figure>
+<p>If device can be found in DFU mode, using blow cmd to trigger usb flash:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STM32_Programmer_CLI -c port=usb1 -w flashlayout_st-image-weston/FlashLayout_xxxxxx.tsv</span><br></pre></td></tr></table></figure>
+<p>STM32CubeProgrammer using a <code>.tsv</code> file to specify flash layout and the binaries are going to use.</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Coding Spirit
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://lzqblog.top/2019/11/16/STM32MP1-getting-started-setup-environments/" title="STM32MP1 getting started: setup environments">https://lzqblog.top/2019/11/16/STM32MP1-getting-started-setup-environments/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/Linux/" rel="tag"><i class="fa fa-tag"></i> Linux</a>
+              <a href="/tags/Yocto/" rel="tag"><i class="fa fa-tag"></i> Yocto</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2019/11/14/Chrome-ERR-NETWORK-CHANGED-on-Ubuntu/" rel="prev" title="Chrome: ERR_NETWORK_CHANGED on Ubuntu">
+                  <i class="fa fa-angle-left"></i> Chrome: ERR_NETWORK_CHANGED on Ubuntu
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2019/11/16/Install-JDK-JRE-for-Ubuntu/" rel="next" title="Install JDK/JRE for Ubuntu">
+                  Install JDK/JRE for Ubuntu <i class="fa fa-angle-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Powered by Coding Spirit. All rights reserved.</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+      <span>Word count total: </span>
+    <span title="Word count total">56k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+      <span>Reading time total &asymp;</span>
+    <span title="Reading time total">3:22</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/codingspirit" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/next-theme-pjax/0.6.0/pjax.min.js" integrity="sha256-vxLn1tSKWD4dqbMRyv940UYw4sXgMtYcK6reefzZrao=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/schemes/muse.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script><script src="/js/pjax.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+<script class="next-config" data-name="chatra" type="application/json">{"enable":true,"async":true,"id":"g8yGaPJ5QNXn2Wubt"}</script>
+<script src="/js/third-party/chat/chatra.js"></script>
+<script async src="https://call.chatra.io/chatra.js"></script>
+
+
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js"></script>
+
+
+
+
+  
+  <script data-pjax async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+</body>
+  
+
+  
+
+  
+</html>
