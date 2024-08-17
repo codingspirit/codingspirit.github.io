@@ -5236,6 +5236,30 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       </tags>
   </entry>
   <entry>
+    <title>Algorithm Puzzles: Merge Strings Alternately</title>
+    <url>/2024/08/16/Algorithm-Puzzles-Merge-Strings-Alternately/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Merge Strings Alternately</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>You are given two strings word1 and word2. Merge the strings by adding letters in alternating order, starting with word1. If a string is longer than the other, append the additional letters onto the end of the merged string.</p>
+<p>Return the merged string.</p>
+<p>Example 1:</p>
+<p>Input: word1 &#x3D; “abc”, word2 &#x3D; “pqr”<br>Output: “apbqcr”<br>Explanation: The merged string will be merged as so:<br>word1:  a   b   c<br>word2:    p   q   r<br>merged: a p b q c r</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>Two pointer:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">mergeAlternately</span>(<span class="params">self, word1: <span class="built_in">str</span>, word2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        len1, len2 = <span class="built_in">len</span>(word1), <span class="built_in">len</span>(word2)</span><br><span class="line">        i1 = i2 = <span class="number">0</span></span><br><span class="line">        ret = <span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="keyword">while</span> i1 &lt; <span class="built_in">len</span>(word1) <span class="keyword">and</span> i2 &lt; <span class="built_in">len</span>(word2):</span><br><span class="line">            ret += word1[i1]</span><br><span class="line">            ret += word2[i2]</span><br><span class="line">            i1 += <span class="number">1</span></span><br><span class="line">            i2 += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        ret += word1[i1:] <span class="keyword">if</span> i1 &lt; len1 <span class="keyword">else</span> word2[i2:]</span><br><span class="line">        <span class="keyword">return</span> ret</span><br></pre></td></tr></table></figure>
+
+<p>T.C.: <code>O(N)</code></p>
+<p><img data-src="/2024/08/16/Algorithm-Puzzles-Merge-Strings-Alternately/Algorithm-Puzzles-Merge-Strings-Alternately-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>black hole</title>
     <url>/blackhole.html</url>
     <content><![CDATA[<html>
