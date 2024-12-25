@@ -5260,6 +5260,56 @@ Set <strong>MACHINE</strong> to other variable if you are not using i.MX8 Mini E
       </tags>
   </entry>
   <entry>
+    <title>Algorithm Puzzles: Greatest Common Divisor of Strings</title>
+    <url>/2024/12/20/Algorithm-Puzzles-Greatest-Common-Divisor-of-Strings/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Greatest Common Divisor of Strings</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>For two strings s and t, we say “t divides s” if and only if s &#x3D; t + t + t + … + t + t (i.e., t is concatenated with itself one or more times).</p>
+<p>Given two strings str1 and str2, return the largest string x such that x divides both str1 and str2.</p>
+<p>Example 1:</p>
+<p>Input: str1 &#x3D; “ABCABC”, str2 &#x3D; “ABC”<br>Output: “ABC”<br>Example 2:</p>
+<p>Input: str1 &#x3D; “ABABAB”, str2 &#x3D; “ABAB”<br>Output: “AB”<br>Example 3:</p>
+<p>Input: str1 &#x3D; “LEET”, str2 &#x3D; “CODE”<br>Output: “”</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><h3 id="First-Solution"><a href="#First-Solution" class="headerlink" title="First Solution"></a>First Solution</h3><figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isDivideable</span>(<span class="params">self, str1: <span class="built_in">str</span>, str2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> str1 == str2 * (<span class="built_in">len</span>(str1) // <span class="built_in">len</span>(str2))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">gcdOfStrings</span>(<span class="params">self, str1: <span class="built_in">str</span>, str2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        len1 = <span class="built_in">len</span>(str1)</span><br><span class="line">        len2 = <span class="built_in">len</span>(str2)</span><br><span class="line">        <span class="keyword">if</span> len1 &gt; len2:</span><br><span class="line">            prefixs = [str2[<span class="number">0</span>:i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">reversed</span>(<span class="built_in">range</span>(<span class="number">1</span>, len2+<span class="number">1</span>)) <span class="keyword">if</span> self.isDivideable(str2, str2[<span class="number">0</span>:i])]</span><br><span class="line">            check_str = str1</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            prefixs = [str1[<span class="number">0</span>:i] <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">reversed</span>(<span class="built_in">range</span>(<span class="number">1</span>, len1+<span class="number">1</span>)) <span class="keyword">if</span> self.isDivideable(str1, str2[<span class="number">0</span>:i])]</span><br><span class="line">            check_str = str2</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> prefix <span class="keyword">in</span> prefixs:</span><br><span class="line">            <span class="keyword">if</span> self.isDivideable(check_str, prefix):</span><br><span class="line">                <span class="keyword">return</span> prefix</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>T.C. <code>O(N^2)</code></p>
+<p><img data-src="/2024/12/20/Algorithm-Puzzles-Greatest-Common-Divisor-of-Strings/Algorithm-Puzzles-Greatest-Common-Divisor-of-Strings-s1.png"></p>
+<h3 id="Optimized-Solution"><a href="#Optimized-Solution" class="headerlink" title="Optimized Solution"></a>Optimized Solution</h3><p>Instead of listing out all possible prefix, we can get gcd length directly:</p>
+<figure class="highlight py"><table><tr><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span>:</span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">isDivideable</span>(<span class="params">self, str1: <span class="built_in">str</span>, str2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">bool</span>:</span><br><span class="line">        <span class="keyword">return</span> str1 == str2 * (<span class="built_in">len</span>(str1) // <span class="built_in">len</span>(str2))</span><br><span class="line"></span><br><span class="line">    <span class="keyword">def</span> <span class="title function_">gcdOfStrings</span>(<span class="params">self, str1: <span class="built_in">str</span>, str2: <span class="built_in">str</span></span>) -&gt; <span class="built_in">str</span>:</span><br><span class="line">        len1 = <span class="built_in">len</span>(str1)</span><br><span class="line">        len2 = <span class="built_in">len</span>(str2)</span><br><span class="line"></span><br><span class="line">        gcd_length = math.gcd(len1, len2)</span><br><span class="line">        candidate = str1[:gcd_length]</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> self.isDivideable(str1, candidate) <span class="keyword">and</span> self.isDivideable(str2, candidate):</span><br><span class="line">            <span class="keyword">return</span> candidate</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>T.C. <code>O(N)</code></p>
+<p><img data-src="/2024/12/20/Algorithm-Puzzles-Greatest-Common-Divisor-of-Strings/Algorithm-Puzzles-Greatest-Common-Divisor-of-Strings-s2.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Python</tag>
+        <tag>Algorithm</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Algorithm Puzzles: Remove Linked List Elements</title>
+    <url>/2024/12/20/Algorithm-Puzzles-Remove-Linked-List-Elements/</url>
+    <content><![CDATA[<p>Algorithm Puzzles <del>everyday</del> <del>every week</del> sometimes: Remove Linked List Elements</p>
+<span id="more"></span>
+<h2 id="Puzzle"><a href="#Puzzle" class="headerlink" title="Puzzle"></a>Puzzle</h2><p>Puzzle from <a href="https://leetcode.com/">leetcode</a>:</p>
+<p>Given the head of a linked list and an integer val, remove all the nodes of the linked list that has Node.val &#x3D;&#x3D; val, and return the new head.</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><figure class="highlight cpp"><table><tr><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Definition for singly-linked list.</span></span><br><span class="line"><span class="comment"> * struct ListNode &#123;</span></span><br><span class="line"><span class="comment"> *     int val;</span></span><br><span class="line"><span class="comment"> *     ListNode *next;</span></span><br><span class="line"><span class="comment"> *     ListNode() : val(0), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x) : val(x), next(nullptr) &#123;&#125;</span></span><br><span class="line"><span class="comment"> *     ListNode(int x, ListNode *next) : val(x), next(next) &#123;&#125;</span></span><br><span class="line"><span class="comment"> * &#125;;</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Solution</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">ListNode* <span class="title">removeElements</span><span class="params">(ListNode* head, <span class="type">int</span> val)</span> </span>&#123;</span><br><span class="line">        ListNode* last = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* newHead = <span class="literal">nullptr</span>;</span><br><span class="line">        ListNode* current = head;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">while</span>(current) &#123;</span><br><span class="line">            <span class="keyword">if</span>(current-&gt;val == val) &#123;</span><br><span class="line">                <span class="keyword">if</span>(last) &#123;</span><br><span class="line">                    last-&gt;next = current-&gt;next;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                last = current;</span><br><span class="line">                <span class="keyword">if</span>(!newHead) &#123;</span><br><span class="line">                    newHead = last;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            current = current-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">return</span> newHead;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>T.C. <code>O(N)</code></p>
+<p><img data-src="/2024/12/20/Algorithm-Puzzles-Remove-Linked-List-Elements/Algorithm-Puzzles-Remove-Linked-List-Elements-s1.png"></p>
+]]></content>
+      <categories>
+        <category>算法题解</category>
+      </categories>
+      <tags>
+        <tag>Algorithm</tag>
+        <tag>C&amp;#43;&amp;#43;</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>black hole</title>
     <url>/blackhole.html</url>
     <content><![CDATA[<html>
